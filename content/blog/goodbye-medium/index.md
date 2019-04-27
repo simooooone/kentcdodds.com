@@ -5,8 +5,7 @@ date: '2019-02-25'
 author: Kent C. Dodds
 description: _I've migrated from Medium to kentcdodds.com/blog... Here's why_
 keywords:
-  - Control
-  - Personal Branding
+  - career
 banner: ./images/banner.jpg
 bannerCredit:
   Photo by [Bobby Johnson](https://unsplash.com/photos/swCOXlxmr5U) on
@@ -84,7 +83,7 @@ To sum up:
 > 2. My views on some topics have changed. (I also took the opportunity to leave
 >    behind some old posts that aren't really applicable to me anymore).
 > 3. I want to dogfood React. (This is a fantastic place for me to play around
->    with React in a safe environment where it's a huge deal if I break stuff).
+>    with React in a safe environment where it's not a huge deal if I break stuff).
 > 4. I like to have full control over the experience. (This is a big one for
 >    me!)
 > 5. It’s open to the collaboration. (My blog is open source and every article

@@ -34,6 +34,43 @@ export default [
     `,
   },
   {
+    title: 'Connect.Tech Keynote',
+    resources: [],
+    tags: [],
+    deliveries: [
+      {
+        event: '[Connect.Tech](https://connect.tech/)',
+        date: '2019-10-16',
+      },
+    ],
+    description: `
+      More details forthcoming...
+    `,
+  },
+  {
+    title: 'React Hook Pitfalls',
+    resources: [],
+    tags: ['react'],
+    deliveries: [
+      {
+        event: '[React Rally 2019](https://www.reactrally.com/)',
+        date: '2019-08-22',
+      },
+    ],
+    description: `
+      The hooks honeymoon phase is over. We were able to overlook our confusion
+      as a reasonable familiarity issue, but now it’s time to get real about the
+      pitfalls of React Hooks. Hooks lead to a better user experience and fewer
+      bugs for sure, but without the right foundational understanding of them
+      and certain JavaScript semantics, we’ll probably cause other problems in
+      the process of using hooks.
+
+      In this talk, we’ll explore some of the gotchas of using hooks, why those
+      things are problems, and how to think about hooks so we develop an
+      intuition for how to use hooks while avoiding the pitfalls.
+    `,
+  },
+  {
     title: 'Requisite React',
     resources: [],
     tags: ['react'],
@@ -84,7 +121,7 @@ export default [
     tags: ['react', 'testing'],
     deliveries: [
       {
-        event: 'Egghead.io Webinar',
+        event: 'egghead.io Webinar',
         date: '2019-02-27',
         recording:
           'https://egghead.io/lessons/react-understanding-how-react-testing-library-works-with-kent-c-dodds',
@@ -211,7 +248,7 @@ export default [
           'https://www.youtube.com/watch?v=M9X2qGddHkU&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
       },
       {
-        event: '[React Rally 2018](https://www.reactrally.com/)',
+        event: '[React Rally 2018](https://2018.reactrally.com/)',
         date: '2018-08-16',
         recording:
           'https://www.youtube.com/watch?v=AiJ8tRRH0f8&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
@@ -867,7 +904,7 @@ export default [
     description: `
         Angular 2 is built for huge web applications that stand the test of time. To accomplish this, Angular 2 utilizes
         the latest and greatest web technologies like ES6 modules/classes and Web Components. Come get a preview of what
-        this looks like with Egghead.io instructor Kent C. Dodds as he live codes an application using the pre-release
+        this looks like with egghead.io instructor Kent C. Dodds as he live codes an application using the pre-release
         alpha version of Angular 2.
       `,
   },

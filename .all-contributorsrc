@@ -247,6 +247,96 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "christiantakle",
+      "name": "Christian Takle",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/684866?v=4",
+      "profile": "https://github.com/christiantakle",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "dimitrisnl",
+      "name": "Dimitrios Lytras",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4951004?v=4",
+      "profile": "https://dimitrioslytras.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "frankcalise",
+      "name": "Frank Calise",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/374022?v=4",
+      "profile": "http://frankcalise.com",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "ivarni",
+      "name": "Ivar Nilsen",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/379849?v=4",
+      "profile": "https://github.com/ivarni",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "ChristopherBiscardi",
+      "name": "Christopher Biscardi",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/551247?v=4",
+      "profile": "http://www.christopherbiscardi.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "PabloDinella",
+      "name": "Pablo R. Dinella",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2482730?v=4",
+      "profile": "http://pablodinella.com/",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "simonswiss",
+      "name": "Simon Vrachliotis",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/485747?v=4",
+      "profile": "http://simonswiss.com",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "wodin",
+      "name": "Michael Wood",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4579020?v=4",
+      "profile": "https://github.com/wodin",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "markerikson",
+      "name": "Mark Erikson",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1128784?v=4",
+      "profile": "http://blog.isquaredsoftware.com",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "jchiatt",
+      "name": "J.C. Hiatt",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2353845?v=4",
+      "profile": "https://jchiatt.com",
+      "contributions": [
+        "content"
+      ]
     }
   ]
 }

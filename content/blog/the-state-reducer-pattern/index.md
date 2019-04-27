@@ -7,17 +7,16 @@ description: >-
   _A new pattern has been implemented in downshift and it's awesome. Use the
   state reducer pattern to make your components more useful._
 keywords:
-  - React
-  - JavaScript
+  - react
+  - javascript
 banner: ./images/banner.jpg
 bannerCredit:
   'Photo by [Daniel Wallace](https://unsplash.com/photos/IliTEyruu7U) on
   [Unsplash](https://unsplash.com/search/photos/waterfall)'
 ---
 
-> Have you heard? I made
-> [an announcement](https://blog.kentcdodds.com/announcing-something-new-4e68b08da35)
-> recently!
+> NOTE: I've published
+> [an updated version of this blog post with React Hooks](/blog/the-state-reducer-pattern-with-react-hooks)!
 
 This last week, [@notruth](https://github.com/notruth) (new code contributor to
 the

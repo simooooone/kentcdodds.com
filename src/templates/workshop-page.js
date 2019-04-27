@@ -4,24 +4,28 @@ import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import SEO from 'components/seo'
 import Container from 'components/container'
 import Layout from 'components/layout'
-import SubscribeForm from 'components/forms/subscribe'
 import {css} from '@emotion/core'
 import {fonts} from '../lib/typography'
-import {get} from 'lodash'
-import Header from '../components/workshops/header'
-import Register from '../components/workshops/register'
+import get from 'lodash/get'
+import isEmpty from 'lodash/isEmpty'
+import Header from 'components/workshops/header'
+import useGetWorkshops from 'components/workshops/use-get-workshops'
+import WorkshopInterestForm from 'components/workshops/workshop-interest-form'
+import {bpMaxSM} from '../lib/breakpoints'
 
 export default function Workshop({data: {site, mdx}}) {
-  const {title, date, banner, noFooter} = mdx.fields
-  const {discount, event, soldOut, time, dealEndDate} = mdx.frontmatter
-
+  const {title, banner} = mdx.fields
+  const {ckTag} = mdx.frontmatter
+  const state = useGetWorkshops()
+  const events = state.events.filter(ws => {
+    return ws.title.toLowerCase() === title.toLowerCase()
+  })
   return (
     <Layout
       site={site}
       frontmatter={mdx.fields}
       headerLink="/workshops"
-      noFooter={noFooter}
-      subscribeForm={<SubscribeForm />}
+      noFooter={true}
     >
       <SEO
         frontmatter={mdx.fields}
@@ -43,15 +47,44 @@ export default function Workshop({data: {site, mdx}}) {
             padding-top: 0;
           `}
         >
-          <Header
-            soldOut={soldOut}
-            title={title}
-            date={date}
-            discount={discount}
-            image={banner ? banner.childImageSharp.fluid : false}
-            buttonText={soldOut ? 'Join the waiting list' : 'Secure your seat'}
-            time={time}
-          />
+          {isEmpty(events) && (
+            <div
+              css={css`
+                padding: 40px 0 0 0;
+                ${bpMaxSM} {
+                  padding: 20px 0 0 0;
+                }
+                h1 {
+                  font-size: 1.75rem;
+                  font-family: ${fonts.semibold}, sans-serif;
+                }
+              `}
+            >
+              {title && <h1>{title} Workshop</h1>}
+            </div>
+          )}
+          {!state.loading &&
+            events.map(scheduledEvent => {
+              const soldOut = scheduledEvent.remaining <= 0
+              const discount = get(scheduledEvent, 'discounts.early', false)
+              return (
+                <Header
+                  key={scheduledEvent.slug}
+                  soldOut={soldOut}
+                  title={title}
+                  date={scheduledEvent && scheduledEvent.date}
+                  image={banner ? banner.childImageSharp.fluid : false}
+                  buttonText={
+                    discount ? 'Secure Your Discount' : 'Secure Your Seat'
+                  }
+                  startTime={scheduledEvent && scheduledEvent.startTime}
+                  endTime={scheduledEvent && scheduledEvent.endTime}
+                  url={scheduledEvent && scheduledEvent.url}
+                  discount={discount}
+                />
+              )
+            })}
+
           <div
             css={css`
               display: flex;
@@ -68,14 +101,8 @@ export default function Workshop({data: {site, mdx}}) {
             `}
           />
           <MDXRenderer>{mdx.code.body}</MDXRenderer>
-          {event && (
-            <Register
-              light
-              event={event}
-              discountAvailable={discount}
-              dealEndDate={dealEndDate}
-              title="Join the waiting list to get notified of future workshops."
-            />
+          {isEmpty(events) && (
+            <WorkshopInterestForm subscribeToTag={ckTag} title={title} />
           )}
         </Container>
       </article>
@@ -92,11 +119,7 @@ export const pageQuery = graphql`
     }
     mdx(fields: {id: {eq: $id}}) {
       frontmatter {
-        soldOut
-        discount
-        event
-        time
-        dealEndDate
+        ckTag
       }
       fields {
         editLink

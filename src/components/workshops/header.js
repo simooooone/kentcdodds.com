@@ -1,5 +1,4 @@
 import React from 'react'
-import Img from 'gatsby-image'
 import {css} from '@emotion/core'
 import {fonts, rhythm} from '../../lib/typography'
 import {bpMaxSM} from '../../lib/breakpoints'
@@ -7,47 +6,69 @@ import theme from '../../../config/theme'
 import {lighten} from 'polished'
 import styles from './styles'
 import discountStripe from '../../images/icons/stripe.svg'
+import {format} from 'date-fns'
+import TimeRange from './time-range'
+
+const Discount = ({discount}) => (
+  <>
+    {discount && (
+      <div
+        css={css`
+          padding: 0 0 15px 0;
+        `}
+      >
+        <em>
+          early bird ends:{' '}
+          {format(new Date(discount.ends), 'MMM Do, YYYY h:mm a (ZZ)')}!
+        </em>
+      </div>
+    )}
+  </>
+)
+
+const Stripe = ({discount, ...props}) => (
+  <div
+    css={css`
+      ${discount
+        ? `
+        display: block;
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        background-image: url(${discountStripe});
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      margin-top: -42px;
+      margin-left: -42px;
+      ${bpMaxSM} {
+        margin-top: -21px;
+        margin-left: -21px;
+        width: 40px;
+        height: 40px;
+        h1 {
+          margin-top: ${discount ? '40px' : 'auto'};
+        }
+      }
+      `
+        : `display: none;`}
+    `}
+    {...props}
+  />
+)
 
 const Header = ({
+  discount = false,
   children,
   title,
   date,
   location,
   soldOut = false,
   buttonText,
-  image = {},
-  discount = false,
-  time,
+  startTime,
+  endTime,
+  url,
 }) => {
-  const Stripe = props => (
-    <div
-      css={css`
-        ${discount
-          ? `
-          display: block;
-          position: absolute;
-          width: 70px;
-          height: 70px;
-          background-image: url(${discountStripe});
-          background-size: 100% 100%;
-          background-repeat: no-repeat;
-        margin-top: -42px;
-        margin-left: -42px;
-        ${bpMaxSM} {
-          margin-top: -21px;
-          margin-left: -21px;
-          width: 40px;
-          height: 40px;
-          h1 {
-            margin-top: ${discount ? '40px' : 'auto'};
-          }
-        }
-        `
-          : `display: none;`}
-      `}
-      {...props}
-    />
-  )
+  const ticketUrl = discount ? discount.url : url
 
   return (
     <div
@@ -84,16 +105,7 @@ const Header = ({
             max-width: 200px;
           }
         }
-        ${image &&
-          `display: grid;
-            grid-template-columns: ${image ? '1fr 2fr' : '2fr'};
-            grid-gap: 20px;
-            ${bpMaxSM} {
-                display: flex;
-                flex-direction: column;
-                //align-items: center;
-            }
-      `};
+
         .button {
           margin-top: ${rhythm(1)};
           background: ${lighten(0.4, `${theme.brand.primary}`)};
@@ -105,31 +117,14 @@ const Header = ({
         }
       `}
     >
-      <Stripe />
-      {image && (
-        <div
-          css={css`
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding-left: 20px;
-            ${bpMaxSM} {
-              justify-content: center;
-              padding-left: 0;
-            }
-          `}
-        >
-          <Img fluid={image} />
-        </div>
-      )}
-
+      <Stripe discount={discount} />
       <div
         css={css`
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           justify-content: center;
-          padding-left: ${image ? '40px' : '0'};
+
           ${bpMaxSM} {
             margin-top: ${rhythm(2)};
             width: 100%;
@@ -154,15 +149,17 @@ const Header = ({
             }
           `}
         >
+          <Discount discount={discount} />
           {date ? (
-            <div className="date">{date}</div>
+            <div className="date">
+              {format(new Date(startTime), 'MMM Do, YYYY')}
+            </div>
           ) : (
             <div className="date">TBA</div>
           )}
-          {time ? (
-            <time>
-              {time} <a href="https://www.thetimezoneconverter.com/">MT</a>
-            </time>
+
+          {startTime ? (
+            <TimeRange startTime={startTime} endTime={endTime} />
           ) : (
             <time>TBA</time>
           )}
@@ -170,19 +167,15 @@ const Header = ({
             <address>{location}</address>
           ) : (
             <address>
-              <a href="https://zoom.us/">Zoom</a>{' '}
-              <i>(you will receive a link via email)</i>
+              <span>Zoom</span> <i>(you will receive a link via email)</i>
             </address>
           )}
         </div>
+
         {children}
         {buttonText && date && (
-          <a
-            href="#register"
-            className="button"
-            aria-label="scroll to registration"
-          >
-            {soldOut && `Sold out -`} {buttonText}
+          <a href={ticketUrl} className="button" aria-label="purchase tickets">
+            {soldOut ? 'Join the waiting list' : buttonText}
           </a>
         )}
       </div>

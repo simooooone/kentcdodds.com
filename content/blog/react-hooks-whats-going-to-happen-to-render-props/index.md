@@ -7,9 +7,9 @@ description: >-
   _What am I going to do with all these render props components now that react
   hooks solve the code reuse problem better than render props ever did?_
 keywords:
-  - React
-  - React Hooks
-  - Render Props
+  - react
+  - react hooks
+  - render props
 banner: ./images/banner.jpg
 bannerCredit:
   'Photo by [Nadine Shaabana](https://unsplash.com/photos/anXB3AhQcJ0) on
@@ -21,7 +21,7 @@ Current Available Translations:
 - [Korean](https://edykim.com/ko/post/react-hooks-whats-going-to-happen-to-render-props/)
 
 About a year ago, I published
-["How to give rendering control to users with prop getters"](https://blog.kentcdodds.com/how-to-give-rendering-control-to-users-with-prop-getters-549eaef76acf).
+["How to give rendering control to users with prop getters"](/blog/how-to-give-rendering-control-to-users-with-prop-getters).
 In that post, I show the entire implementation (at the time) of
 [`react-toggled`](https://github.com/kentcdodds/react-toggled) which I actually
 built for the sole purpose of teaching some of the patterns that I used in
@@ -31,10 +31,10 @@ served as a great way to teach the prop getters pattern.
 
 Both react-toggled and downshift use the render prop pattern as a mechanism for
 React component logic code sharing. As I explained in my blog post
-["When to NOT use Render Props"](https://blog.kentcdodds.com/when-to-not-use-render-props-5397bbeff746),
-that's the primary use case for the render prop pattern. But that's also the
-primary use case for React Hooks as well. And React Hooks are WAY simpler than
-class components + render props.
+["When to NOT use Render Props"](/blog/when-to-not-use-render-props), that's the
+primary use case for the render prop pattern. But that's also the primary use
+case for React Hooks as well. And React Hooks are WAY simpler than class
+components + render props.
 
 So does that mean that when React Hooks are stable you wont need render props at
 all anymore? **No!** I can think of two scenarios where the render prop pattern
@@ -189,7 +189,7 @@ Here's the relevant bit:
 ```
 
 Checkout that `rowRenderer` prop there. Do you know what that is? IT'S A RENDER
-PROP! What!? 🙀 That's inversion of control in all it's glory with render props
+PROP! What!? 🙀 That's inversion of control in all its glory with render props
 right there. That's a prop that `react-virtualized` uses to delegate control of
 rendering rows in a list to you the user of the component. If
 `react-virtualized` were to be rewritten to use hooks, _maybe_ it could accept
@@ -209,7 +209,7 @@ Good luck!
 
 **Learn more about Refactoring to React Hooks from me**:
 
-[My new egghead.io course](blog/introducing-a-new-course-simplify-react-apps-with-react-hooks-and-suspense)
+[My new egghead.io course](/blog/introducing-a-new-course-simplify-react-apps-with-react-hooks-and-suspense)
 will show you how to refactor a typical app's components to use react hooks (and
 React.lazy/suspense). It's a good time!
 

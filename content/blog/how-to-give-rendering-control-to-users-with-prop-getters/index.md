@@ -7,29 +7,28 @@ description: >-
   _Render props are awesome, put it together with prop getters and you have an
   awesome combination to give users of your React components..._
 keywords:
-  - JavaScript
-  - React
-  - Components
+  - javascript
+  - react
 banner: ./images/banner.jpg
 bannerCredit:
   'Photo by [Annie Spratt](https://unsplash.com/photos/rx1iJ59jRyU) on
   [Unsplash](https://unsplash.com)'
 ---
 
-> If you're an Egghead.io subscriber, you can also learn about this pattern with
+> If you're an egghead.io subscriber, you can also learn about this pattern with
 > these two lessons:
 > [Use Prop Collections with Render Props](https://egghead.io/lessons/react-use-prop-collections-with-render-props)
 > and
 > [Use Prop Getters with Render Props](https://egghead.io/lessons/react-use-prop-getters-with-render-props)
 
 Since I
-[released downshift 🏎](https://medium.com/@kentcdodds/introducing-downshift-for-react-b1de3fca0817)
+[released downshift 🏎](https://kentcdodds.com/blog/introducing-downshift-for-react)
 a few weeks ago. Of all things, I think the most common question I've gotten has
 been about the "prop getters." As far as I know,
 [downshift](https://github.com/paypal/downshift) is the first library to
 implement this pattern, so I thought I'd explain why it's useful and how to
 implement it. If you're unfamiliar with downshift, please read
-[the intro post](https://medium.com/@kentcdodds/introducing-downshift-for-react-b1de3fca0817)
+[the intro post](https://kentcdodds.com/blog/introducing-downshift-for-react)
 before you continue. Don't worry, I'll wait...
 
 ![dog wagging the tail while waiting](./images/0.gif)
