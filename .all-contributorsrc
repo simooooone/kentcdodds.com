@@ -337,6 +337,33 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "idanen",
+      "name": "Idan Entin",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1687893?v=4",
+      "profile": "https://github.com/idanen",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "chaseadamsio",
+      "name": "Chase Adams",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1024544?v=4",
+      "profile": "https://chaseonsoftware.com/about",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "Wgil",
+      "name": "Warao",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12855914?v=4",
+      "profile": "https://github.com/Wgil",
+      "contributions": [
+        "content"
+      ]
     }
   ]
 }
