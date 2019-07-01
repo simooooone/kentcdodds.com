@@ -16,7 +16,7 @@ bannerCredit:
 ---
 
 I don't know that I've ever been more excited about an
-[egghead.io](http://egghead.io/) course release before (having personally
+[egghead.io](http://egghead.io) course release before (having personally
 published
 [over 100 videos on egghead](https://egghead.io/instructors/kentcdodds), that's
 saying something...). Two of my courses will be (have now been) released as part
@@ -116,10 +116,9 @@ necessary to allow the user of the component to render what they need for their
 use case.
 
 My personal favorite implementation of this pattern (and some of the following
-patterns) is [`downshift`](https://github.com/paypal/downshift)
-[🏎](https://github.com/paypal/downshift), but
-[I'm a little bit biased](https://blog.kentcdodds.com/introducing-downshift-for-react-b1de3fca0817)
-😅
+patterns) is [`downshift`](https://github.com/downshift-js/downshift)
+[🏎](https://github.com/downshift-js/downshift), but
+[I'm a little bit biased](/blog/introducing-downshift-for-react) 😅
 
 ### Prop Collections and Getters
 
@@ -178,7 +177,7 @@ one 😀
 ![I can hardly wait](./images/4.gif)
 
 I really hope that this course will help you build more useful React components.
-The course will hit [egghead.io](http://egghead.io/) 🔜 Enjoy!
+The course will hit [egghead.io](http://egghead.io) 🔜 Enjoy!
 
 **Things to not miss**:
 

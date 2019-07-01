@@ -41,6 +41,15 @@ function Blog({data: {allMdx}, pageContext: {pagination}, subscribeForm}) {
           }
         `}
       >
+        <div
+          css={{
+            marginTop: 20,
+            fontStyle: 'italic',
+          }}
+        >
+          {`Looking for something specific? `}
+          <Link to="/search">Search for a blogpost here.</Link>
+        </div>
         {posts.map(({node: post}) => (
           <div
             key={post.id}
@@ -98,10 +107,10 @@ function Blog({data: {allMdx}, pageContext: {pagination}, subscribeForm}) {
                 {post.frontmatter.title}
               </Link>
             </h2>
-            {/* <small>{post.frontmatter.date}</small> */}
             <p
               css={css`
                 margin-top: 10px;
+                overflow-x: scroll;
               `}
             >
               {post.excerpt}

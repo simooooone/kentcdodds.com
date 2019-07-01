@@ -22,7 +22,7 @@ figure out how to test React components. I tried
 immediately decided that I would never use it to test my React components. I've
 expressed this feeling on many occasions and get asked on a regular basis why I
 feel the way I do about `shallow` rendering and why
-[`react-testing-library`](https://github.com/kentcdodds/react-testing-library)
+[`react-testing-library`](https://github.com/testing-library/react-testing-library)
 will never support `shallow` rendering.
 
 So finally I'm coming out with it and explaining why I never use shallow
@@ -150,13 +150,12 @@ bit like this:
 
 Look familiar? So all shallow rendering is doing is taking the result of the
 given component's `render` method (which will be a React element (read
-[What is JSX?](https://blog.kentcdodds.com/what-is-jsx-310ab98c463e))) and
-giving us a `wrapper` object with some utilities for traversing this JavaScript
-object. This means it doesn't run lifecycle methods (because we just have the
-React elements to deal with), it doesn't allow you to actually interact with DOM
-elements (because nothing's actually rendered), and it doesn't actually attempt
-to get the react elements that are returned by your custom components (like our
-`Fade` component).
+[What is JSX?](/blog/what-is-jsx))) and giving us a `wrapper` object with some
+utilities for traversing this JavaScript object. This means it doesn't run
+lifecycle methods (because we just have the React elements to deal with), it
+doesn't allow you to actually interact with DOM elements (because nothing's
+actually rendered), and it doesn't actually attempt to get the react elements
+that are returned by your custom components (like our `Fade` component).
 
 ### Why people use shallow rendering
 
@@ -272,7 +271,7 @@ mocks.
 ### Without shallow rendering
 
 I'm a huge believer of the guiding principle of
-[`react-testing-library`](https://github.com/kentcdodds/react-testing-library):
+[`react-testing-library`](https://github.com/testing-library/react-testing-library):
 
 > [_The more your tests resemble the way your software is used, the more confidence they can give you._](https://twitter.com/kentcdodds/status/977018512689455106)_ — Kent
 > C. Dodds 👋_
@@ -349,7 +348,7 @@ test('you can mock things with jest.mock', () => {
 
 A few weeks ago, my [DevTipsWithKent](http://kcd.im/devtips) (my weekdaily
 livestream on [YouTube](http://kcd.im/youtube)) I livestreamed
-"[Migrating from shallow rendering react components to explicit component mocks](https://www.youtube.com/watch?v=LHUdxkThTM0&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)".
+"[Migrating from shallow rendering react components to explicit component mocks](https://youtu.be/LHUdxkThTM0&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)".
 In that I demonstrate some of the pitfalls of shallow rendering I describe above
 as well as how to use jest mocking instead.
 
@@ -384,21 +383,21 @@ I hope that helps!
 
 **Learn more about testing from me**:
 
-- [Frontend Masters](https://frontendmasters.com/):
-  [Testing Practices and Principles](https://frontendmasters.com/workshops/testing-practices-principles/)
+- [Frontend Masters](https://frontendmasters.com):
+  [Testing Practices and Principles](https://frontendmasters.com/workshops/testing-practices-principles)
   &
-  [Testing React Applications](https://frontendmasters.com/courses/testing-react/)
+  [Testing React Applications](https://frontendmasters.com/courses/testing-react)
 - [Confidently Ship Production React Apps](https://egghead.io/lessons/react-confidently-ship-production-react-apps) — Something
-  new on [egghead.io](http://egghead.io/). It's a recording of one of my talks
-  especially for [egghead.io](http://egghead.io/). I think you'll really enjoy
-  it (and it's 🆓)
-- [Write tests. Not too many. Mostly integration.](https://www.youtube.com/watch?v=Fha2bVoC8SE&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — My
+  new on [egghead.io](http://egghead.io). It's a recording of one of my talks
+  especially for [egghead.io](http://egghead.io). I think you'll really enjoy it
+  (and it's 🆓)
+- [Write tests. Not too many. Mostly integration.](https://youtu.be/Fha2bVoC8SE&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — My
   talk at Assert.js conference
   ([and here's the blog post](http://kcd.im/write-tests))
-- [Testing Practices and Principles](https://www.youtube.com/watch?v=VQZx1Z3sW0E&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — A
+- [Testing Practices and Principles](https://youtu.be/VQZx1Z3sW0E&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — A
   recording of my workshop at Assert.js
 
 **Things to not miss**:
 
-- [Avoid setState warnings on unmounted React components](https://www.youtube.com/watch?v=8BNdxFzMeVg&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
-- [Magic Move effect with JavaScript](https://www.youtube.com/watch?v=3AaghqS3W4Y&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
+- [Avoid setState warnings on unmounted React components](https://youtu.be/8BNdxFzMeVg&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
+- [Magic Move effect with JavaScript](https://youtu.be/3AaghqS3W4Y&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)

@@ -122,13 +122,15 @@ function ScheduledWorkshop({
                 padding-right: 10px;
               `}
             >
-              <img
-                css={css`
-                  max-width: 145px;
-                `}
-                src={techImage(tech)}
-                alt={tech}
-              />
+              {techImage(tech) ? (
+                <img
+                  css={css`
+                    max-width: 145px;
+                  `}
+                  src={techImage(tech)}
+                  alt={tech}
+                />
+              ) : null}
             </span>
             <h1>{title}</h1>
           </Link>
@@ -179,9 +181,7 @@ function ScheduledWorkshop({
           margin-top: 10px;
         `}
       >
-        <div className="date">
-          {format(new Date(startTime), 'MMM Do, YYYY')}
-        </div>
+        <div className="date">{date}</div>
         {startTime ? (
           <TimeRange startTime={startTime} endTime={endTime} />
         ) : (
@@ -212,14 +212,16 @@ function ScheduledWorkshop({
       >
         {description}
       </Markdown>
-      <Link
-        to={url}
-        css={css`
-          color: ${theme.brand.primary};
-        `}
-      >
-        Learn more
-      </Link>
+      {url && (
+        <Link
+          to={url}
+          css={css`
+            color: ${theme.brand.primary};
+          `}
+        >
+          Learn more
+        </Link>
+      )}
     </div>
   )
 }

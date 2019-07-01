@@ -20,9 +20,9 @@ bannerCredit:
 
 This last week, [@notruth](https://github.com/notruth) (new code contributor to
 the
-[downshift](https://github.com/paypal/downshift/blob/master/README.md#contributors)
+[downshift](https://github.com/downshift-js/downshift/blob/master/README.md#contributors)
 project), filed an issue:
-["closeOnSelection" property (Multiple selection out of box)](https://github.com/paypal/downshift/issues/319).
+["closeOnSelection" property (Multiple selection out of box)](https://github.com/downshift-js/downshift/issues/319).
 All you really need to know about that issue is that the decisions made about
 how downshift updates its state based on user interaction in certain scenarios
 didn't agree with what @notruth wants for their implementation. 😖
@@ -60,24 +60,24 @@ user selects an item and in the issue @notruth posted, they are saying that
 decision doesn't fit their use case. 🤷‍♂️
 
 This is one reason why downshift supports
-[control props](https://github.com/paypal/downshift#control-props). It allows
-you to have complete control over the internal state of downshift. In this case,
-@notruth could have controlled the `isOpen` state and use the `onStateChange` to
-know when to update their version of that state. However, that's a fair amount
-of work, so it's understandable why @notruth would prefer an easier method. But
-the suggestion of adding a new prop for that didn't seem to provide the benefit
-to offset the cost of increasing the API surface area of downshift. So giving it
-a little more thought gave me an idea of how we could simplify this and reduce
-boilerplate further. 😈
+[control props](https://github.com/downshift-js/downshift#control-props). It
+allows you to have complete control over the internal state of downshift. In
+this case, @notruth could have controlled the `isOpen` state and use the
+`onStateChange` to know when to update their version of that state. However,
+that's a fair amount of work, so it's understandable why @notruth would prefer
+an easier method. But the suggestion of adding a new prop for that didn't seem
+to provide the benefit to offset the cost of increasing the API surface area of
+downshift. So giving it a little more thought gave me an idea of how we could
+simplify this and reduce boilerplate further. 😈
 
 ### A simpler API
 
 That's when I came up with
-[a new prop I initially called](https://github.com/paypal/downshift/issues/319#issuecomment-361640218)
-[`modifyStateChange`](https://github.com/paypal/downshift/issues/319#issuecomment-361640218).
+[a new prop I initially called](https://github.com/downshift-js/downshift/issues/319#issuecomment-361640218)
+[`modifyStateChange`](https://github.com/downshift-js/downshift/issues/319#issuecomment-361640218).
 Because downshift already supports control props, it isolates state changes to
 an internal method called
-[`internalSetState`](https://github.com/paypal/downshift/blob/118a87234a9331e716142acfb95eb411cc4f8015/src/downshift.js#L302-L410).
+[`internalSetState`](https://github.com/downshift-js/downshift/blob/118a87234a9331e716142acfb95eb411cc4f8015/src/downshift.js#L302-L410).
 It's a surprisingly long method (mostly because it's highly commented). This
 isolation made the implementation of this new feature trivial. Any time we make
 state changes, we first call a method to see if the user of downshift is
@@ -90,14 +90,14 @@ want to prevent `isOpen` from changing to `false` if the user selects
 (keydown/click) on an item. So they need to know what type of change is about to
 happen. Luckily, we needed this distinction for `onStateChange` as well and
 already had this mechanism in place! It's called
-[`stateChangeTypes`](https://github.com/paypal/downshift#statechangetypes)
-([here's the current list](https://github.com/paypal/downshift/blob/118a87234a9331e716142acfb95eb411cc4f8015/src/downshift.js#L103-L119)).
+[`stateChangeTypes`](https://github.com/downshift-js/downshift#statechangetypes)
+([here's the current list](https://github.com/downshift-js/downshift/blob/118a87234a9331e716142acfb95eb411cc4f8015/src/downshift.js#L103-L119)).
 🤖
 
 So, @notruth opened
-[the pull request](https://github.com/paypal/downshift/pull/320) to add the
-`modifyStateChange`. After considering it a little further, I decided that this
-could be generalized into a pattern that could be really useful for other
+[the pull request](https://github.com/downshift-js/downshift/pull/320) to add
+the `modifyStateChange`. After considering it a little further, I decided that
+this could be generalized into a pattern that could be really useful for other
 libraries. Patterns are much easier to evangelize when they have a name, so
 [I looked for one](https://twitter.com/kentcdodds/status/958707800292470784). 🕵️
 
@@ -175,9 +175,9 @@ a look. I think we should probably reach for this _way_ before we reach for
 Redux!
 
 This is a talk I gave at
-[ReactJS Utah](https://www.meetup.com/ReactJS-Utah/events/246683120/) a few
-weeks ago. If you're curious what
+[ReactJS Utah](https://www.meetup.com/ReactJS-Utah/events/246683120) a few weeks
+ago. If you're curious what
 [`babel-plugin-macros`](https://github.com/kentcdodds/babel-plugin-macros) is
 all about and why it's so cool it's
-[built-into create-react-app](https://github.com/facebookincubator/create-react-app/pull/3675),
+[built-into create-react-app](https://github.com/facebook/create-react-app/pull/3675),
 then give this a watch!

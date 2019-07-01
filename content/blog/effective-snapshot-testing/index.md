@@ -105,8 +105,7 @@ console for the developers using your tool. Before snapshot testing I would
 always write a silly regex that got the basic gist of what the message should
 say, but with snapshot testing it's so much easier.
 
-Here's an example of this from
-[kcd-scripts](https://blog.kentcdodds.com/automation-without-config-412ab5e47229):
+Here's an example of this from [kcd-scripts](/blog/tools-without-config):
 
 - [Tests](https://github.com/kentcdodds/kcd-scripts/blob/11f6218772ee2075cebddadd30a50a6d4bdec637/src/__tests__/index.js)
 - [Snapshot output](https://github.com/kentcdodds/kcd-scripts/blob/11f6218772ee2075cebddadd30a50a6d4bdec637/src/__tests__/__snapshots__/index.js.snap)
@@ -248,7 +247,7 @@ expect.addSnapshotSerializer({
 
 There are a bunch of things you can do with custom serializers. I highly suggest
 the talk
-["Jest Snapshots and Beyond"](https://www.youtube.com/watch?v=HAuXJVI_bUs&list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0)
+["Jest Snapshots and Beyond"](https://youtu.be/HAuXJVI_bUs&list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0)
 from [Rogelio Guzman](https://twitter.com/rogeliog) at React Conf 2017 where he
 talks about this more.
 
@@ -289,7 +288,7 @@ diff).
 **Things to not miss:**
 
 - ["I haven't experienced imposter syndrome, and maybe you haven't either"](https://rachsmith.com/2017/i-dont-have-imposter-syndrome) — a
-  great blog post by a great person [Rach Smith](https://rachsmith.com/) (who
+  great blog post by a great person [Rach Smith](https://rachsmith.com) (who
   happens to also tweet interesting things, I suggest you
   [give her a follow](https://twitter.com/rachsmithtweets))
 - [`seapig`](https://github.com/enkidevs/seapig) - 🌊🐷 Utility for generalized

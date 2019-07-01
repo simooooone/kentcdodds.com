@@ -214,19 +214,15 @@ Good luck! And stay awesome 😎
   blogpost as an expansion on this (I think it's a great idea, in addition I
   think you should version the error messages with your project). Maybe one day.
 - ["The Future of RethinkDB"](https://changelog.com/podcast/266) on
-  [The Changelog](https://changelog.com/). It's a great example of a community
+  [The Changelog](https://changelog.com). It's a great example of a community
   rallying together to keep open source going. And RethinkDB seems really
   awesome so I'm glad it's pushing forward!
-- [Did you know...](https://blog.kentcdodds.com/did-you-know-3079d5aec43b) by
-  me. Something you might not have known about Medium before and now that you do
-  I'd appreciate you applying that knowledge to
-  [the things I publish](https://blog.kentcdodds.com/) 😉
 - [Flexbox Zombies](http://geddski.teachable.com/p/flexbox-zombies). The best
   way to learn flexbox by the amazing
   [Dave Geddes](https://twitter.com/geddski). Also check out
   [Grid Critters](https://gridcritters.com/p/gridcritters) (to learn CSS Grid,
   also by Dave) which will be released soon!
-- [Code Sponsor](https://codesponsor.io/). I've already shared this, but they
+- [Code Sponsor](https://codesponsor.io). I've already shared this, but they
   have a bunch of money they can give developers who want their OSS work to be
   funded and are looking for more folks to sign up. So if you're a dev who does
   OSS, give them a look :)

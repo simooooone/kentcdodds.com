@@ -46,7 +46,7 @@ if (addOne(2) > 2) {
 
 Often, we can use this syntax in our source code so long as we convert it to
 syntax that can run in the browser (for example, by using a transpiler such as
-[babel](https://babeljs.io/):
+[babel](https://babeljs.io):
 [example transpiled in the browser with babel-preset-env](http://babeljs.io/repl/#?babili=false&browsers=ie%2010&build=&builtIns=false&spec=false&loose=false&code_lz=MYewdgzgLgBAhgEwQeTAUxgXhmArgWywD4cCYBqGARgCgBLAMxgApEV1mAmAShhJ5gBvGjBihIIADZoAdJJABzZgHIAsnCgALGTADqIAO4BCZdxoBfGkA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&sourceType=module&lineWrap=true&presets=env&prettier=false&targets=&version=6.26.0&envVersion=1.6.2)).
 
 Some other of these new features rely on new APIs, like
@@ -64,7 +64,7 @@ With these, if you
 the `includes` function is not transpiled because it's not a syntax issue, but a
 built-in API one and babel's env preset only includes transforms for syntax
 transformations. You _could_
-[write your own babel plugin](https://kentcdodds.com/talks/#writing-custom-babel-and-eslint-plugins-with-asts)
+[write your own babel plugin](/talks/#writing-custom-babel-and-eslint-plugins-with-asts)
 ([like this](https://astexplorer.net/#/gist/538b72e2af148a14d7c0f5824b431cd6/47a57f42697199d6cfa1d4b1027951ef170a980e))
 to transform the code, but for _some_ APIs it just wouldn't be practical because
 the transformed version would be significantly complex.
@@ -117,7 +117,7 @@ are more spec-complient than `core-js`).
 So what did I do to fix my IE10 bug? Well, one thing that really bugs me is that
 I have to ship all this code for polyfills to all browsers even if they _do_
 support these features. But a few years ago I heard of
-[a service](https://polyfill.io/) that was able to ship polyfills that are
+[a service](https://polyfill.io) that was able to ship polyfills that are
 relevant only to the browser requesting them. I created my own endpoint that
 uses [the module](https://github.com/Financial-Times/polyfill-service) that
 powers that service and I'll write about that next week!
@@ -136,7 +136,7 @@ that your browsers don't support.
 
 - [The Beginner's Guide to React](http://kcd.im/beginner-react)
 - [Advanced React Component Patterns](http://kcd.im/advanced-react) (also on
-  [Frontend Masters](https://frontendmasters.com/courses/advanced-react-patterns/)).
+  [Frontend Masters](https://frontendmasters.com/courses/advanced-react-patterns)).
 
 **Things to not miss**:
 
@@ -144,9 +144,9 @@ that your browsers don't support.
   used [capybara](https://github.com/teamcapybara/capybara) before you'll
   probably love this util from [Justin Searls](https://twitter.com/searls). If
   you like this, then you'll probably love
-  [cypress-testing-library](https://github.com/kentcdodds/cypress-testing-library).
+  [cypress-testing-library](https://github.com/testing-library/cypress-testing-library).
   In any case,
-  [don't reuse your CSS selectors as test selectors](https://blog.kentcdodds.com/making-your-ui-tests-resilient-to-change-d37a6ee37269)!
+  [don't reuse your CSS selectors as test selectors](/blog/making-your-ui-tests-resilient-to-change)!
 - [guppy](https://github.com/joshwcomeau/guppy) — 🐠A friendly application
   manager and task runner for React.js by
   [Josh Comeau](https://twitter.com/joshwcomeau).

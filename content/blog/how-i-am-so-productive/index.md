@@ -32,15 +32,14 @@ basis these days:
   with
   [new friends playing Dominion](https://twitter.com/craigwalker1123/status/1039138835714560000))
 - On Mondays, I publish the blogpost newsletter from two weeks ago to
-  [blog.kentcdodds.com](http://blog.kentcdodds.com/), a new one for subscribers.
+  [kentcdodds.com/blog](http://kentcdodds.com/blog), a new one for subscribers.
   (~1.5 hours of work, depending...)
-- Product tasks (currently helping work on [paypal.me](https://paypal.me/))
-  (this is normally where most of my weekday is spent)
+- Product tasks (currently helping work on [paypal.me](https://paypal.me)) (this
+  is normally where most of my weekday is spent)
 - Attend work meetings
 - Help people on slack/video chat
-- Work on
-  [paypal-scripts](https://blog.kentcdodds.com/automation-without-config-412ab5e47229)
-  (among other internal libraries and tools)
+- Work on [paypal-scripts](/blog/tools-without-config) (among other internal
+  libraries and tools)
 - traveling/training (about once a quarter. I'm on an airplane right now for
   such an engagement)
 - Research, prepare, and do a
@@ -52,13 +51,13 @@ basis these days:
 - Travel to (sometimes) and speak at a conference (about once or twice a month)
 - Travel to (sometimes) and deliver a 1–2 day workshop on one of five topics I
   regularly train about.
-- Record [egghead.io](http://egghead.io/) lessons and courses (working on some
-  of this very hard core right now)
+- Record [egghead.io](http://egghead.io) lessons and courses (working on some of
+  this very hard core right now)
 - Research and prepare educational material (for
   talks/workshops/courses/devtips/etc.)
 - Go out to lunch with a (new) friend in the community about once a week
 - Outline and prepare for writing my novel for
-  [NaNoWriMo](https://nanowrimo.org/) (which is going to be epic by the way).
+  [NaNoWriMo](https://nanowrimo.org) (which is going to be epic by the way).
 - [AMA](http://kcd.im/ama): Ask Me Anything (currently has 475 questions I've
   answered).
 - [TechChats](http://kcd.im/tech-chats): livestream video chats with people
@@ -89,7 +88,7 @@ work I had to do first). It's likely that I've already released one or two new
 versions of my npm modules, answered a half dozen questions, and
 responded/reviewed several GitHub issues/PRs. Now I start on whatever PayPal
 product work I'm working on (as I mentioned, I'm helping with
-[paypal.me](https://paypal.me/) right now). I meet with my co-workers and decide
+[paypal.me](https://paypal.me) right now). I meet with my co-workers and decide
 the highest priority tasks and get to work on them.
 
 At ~12:00 PM (often later if I'm really involved in something), I go up and have
@@ -103,7 +102,7 @@ have work to do), and releasing more versions of various OSS libraries/tools.
 
 I wrap up the day between 5:00 PM and 6:00 PM and head upstairs. It's family
 time. Often I'll hang out with my wife after the kids are in bed. Sometimes
-though, if I'm working on a big course for [egghead.io](http://egghead.io/) or
+though, if I'm working on a big course for [egghead.io](http://egghead.io) or
 something, I'll go back to my office and start working on that. Normally I'll go
 to bed before 11:00 PM.
 
@@ -189,10 +188,10 @@ years I've been using an awesome tool called
 to automatically release my packages.
 
 The concept of automation is something
-[I've written about in the past](https://blog.kentcdodds.com/an-argument-for-automation-fce8394c14e2).
-It's how I got into software development and I feel strongly that automation is
-the way we can make ourselves more productive
-([even if it takes longer to develop the automation than the time it would save us](https://xkcd.com/1205/)).
+[I've written about in the past](/blog/automation). It's how I got into software
+development and I feel strongly that automation is the way we can make ourselves
+more productive
+([even if it takes longer to develop the automation than the time it would save us](https://xkcd.com/1205)).
 If you find yourself repeatedly doing a task, see if there's a simple way to
 automate it. (Like
 [what I do for creating my kcd.im/ short urls](https://github.com/kentcdodds/hive-api)
@@ -207,9 +206,10 @@ better).
 Many of those releases of my open source projects I do are releasing code that I
 did not write. I put forth an investment of time in helping
 [and teaching](http://kcd.im/pull-request) other people contribute to my
-projects and [do things](https://github.com/kentcdodds/all-contributors) to help
-motivate people to do so. This means that I'm able to do more because other
-people handle a lot of project maintenance for me so I can do other things.
+projects and [do things](https://github.com/all-contributors/all-contributors)
+to help motivate people to do so. This means that I'm able to do more because
+other people handle a lot of project maintenance for me so I can do other
+things.
 
 ### Don't answer the same question twice
 
@@ -217,8 +217,7 @@ I learned early on that people ask me repeat questions early on. I like to give
 them answers, but I also found out quickly that
 [I don't have time to answer everyone](http://kcd.im/no-time) and it's a bit
 frustrating to answer the same question multiple times. This is why having
-[an active blog](https://blog.kentcdodds.com/) and [an AMA](http://kcd.im/ama)
-are super helpful.
+[an active blog](/blog) and [an AMA](http://kcd.im/ama) are super helpful.
 
 If someone asks me a question, 99% of the time I'll ask them to ask it on my
 AMA. If I get the same question many times, then I'll make it the subject of a
@@ -273,13 +272,13 @@ much all boils down to: Family, Religion, and Coding.
 
 Even though this is working out so far, I don't believe this is sustainable.
 This is one reason why I'm so excited about writing this novel for
-[NaNoWriMo](https://nanowrimo.org/). It'll be a new creative outlet. And
+[NaNoWriMo](https://nanowrimo.org). It'll be a new creative outlet. And
 hopefully by November I'll be done with most of
 [the HUGE things I'm working](https://twitter.com/kentcdodds/status/1038584983990849536)
 on so I can dedicate myself to writing 50,000 words in 30 days :)
 
 That said, I think short bursts of hyper-focus do help me get a lot done.
-Whether I'm hyper-focused on an [egghead.io](http://egghead.io/) course, or
+Whether I'm hyper-focused on an [egghead.io](http://egghead.io) course, or
 getting something specific done at work, it helps me get things done. I'm not
 sure how to explain it, but for me hyper-focus means that I kinda don't think
 about anything else for a while. When I'm not with my family or fulfilling
@@ -321,10 +320,10 @@ think may have something to do with my productivity.
 
 I do not spend a lot of time watching other people's courses or reading other
 people's blogs/newsletters. I definitely will skim blog posts as needed, or I'll
-sit down and watch a few [egghead.io](http://egghead.io/) lessons or part of a
+sit down and watch a few [egghead.io](http://egghead.io) lessons or part of a
 Frontend Master's course when there's something specific I need to learn. I love
-[Dave Geddes's](https://gedd.ski/) mastery games on
-[CSS grid](https://www.gridcritters.com/) and
+[Dave Geddes's](https://gedd.ski) mastery games on
+[CSS grid](https://www.gridcritters.com) and
 [Flexbox](https://flexboxzombies.com/p/flexbox-zombies), but generally I spend a
 bunch more time working on producing my own material/projects. I think that
 makes me more productive as well.
@@ -370,9 +369,9 @@ inbox two weeks before it's published to my blog:
 
 **Learn more about career development from me**:
 
-- [Why and How I started public speaking](https://blog.kentcdodds.com/why-and-how-i-started-public-speaking-d5ae78303707)
+- [Why and How I started public speaking](/blog/why-and-how-i-started-public-speaking)
 - [Getting Noticed and Widening Your Reach](https://buttondown.email/kentcdodds/archive/03761505-8609-404c-a5b7-5367013292bf)
-- [Zero to 60 in Software Development: How to Jumpstart Your Career — Forward 4 Web Summit](https://www.youtube.com/watch?v=-qPh6I2hfjw&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
+- [Zero to 60 in Software Development: How to Jumpstart Your Career — Forward 4 Web Summit](https://youtu.be/-qPh6I2hfjw&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
 
 **Things to not miss**:
 
@@ -380,7 +379,7 @@ inbox two weeks before it's published to my blog:
   make sure to add react-testing-library in the "other" field for "testing
   tools." If they can add enzyme, then they should have react-testing-library as
   well!
-- [A Geek Leader 059: Kent C. Dodds](https://www.ageekleader.com/agl-059-kent-c-dodds/) — On
+- [A Geek Leader 059: Kent C. Dodds](https://www.ageekleader.com/agl-059-kent-c-dodds) — On
   this podcast I talk about my career story and stuff! Should be interesting if
   you thought this blog post was interesting :)
 - [jest-expect-message](https://github.com/mattphillips/jest-expect-message) by

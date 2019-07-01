@@ -26,8 +26,8 @@ The example itself is a little unimpressive from a user experience standpoint
 update it to look pretty). But the underlying code there is what I want to talk
 about.
 
-When I created [downshift](https://github.com/paypal/downshift), I gave it the
-following tagline:
+When I created [downshift](https://github.com/downshift-js/downshift), I gave it
+the following tagline:
 
 > _🏎 Primitives to build simple, flexible, WAI-ARIA compliant enhanced input
 > React components_
@@ -59,7 +59,7 @@ https://twitter.com/kentcdodds/status/977317793992503297
 
 This week I livestreamed myself in the process of doing this for a component I'm
 working on. You can
-[find the recording here](https://www.youtube.com/watch?v=a7OhAQIx3xc&list=PLV5CVI1eNcJh5CTgArGVwANebCrAh2OUE).
+[find the recording here](https://youtu.be/a7OhAQIx3xc&list=PLV5CVI1eNcJh5CTgArGVwANebCrAh2OUE).
 This component is a special amount input component that has a currency selection
 and the input has some special behaviors (like changing the font size the wider
 it gets etc.). The logic behind the component is what I'm trying to share. It
@@ -94,17 +94,17 @@ I hope this is helpful! Good luck!
 
 **Learn more about Render Props from me**:
 
-- [How to give rendering control to users with prop getters](https://blog.kentcdodds.com/how-to-give-rendering-control-to-users-with-prop-getters-549eaef76acf) — My
+- [How to give rendering control to users with prop getters](/blog/how-to-give-rendering-control-to-users-with-prop-getters) — My
   blog post from a few months back about a pattern that's complementary to
   render props
-- [Testing components using render props](https://blog.kentcdodds.com/testing--components-using-render-props-5623ab1814c) — If
+- [Testing components using render props](/blog/testing-components-using-render-props) — If
   you want to test component A which uses component B, and component B has a
   render prop API, read this.
-- [Answers to common questions about render props](https://blog.kentcdodds.com/answers-to-common-questions-about-render-props-a9f84bb12d5d) — My
+- [Answers to common questions about render props](/blog/answers-to-common-questions-about-render-props) — My
   blog post that is what the title says it is...
 - [egghead.io](https://egghead.io/courses/advanced-react-component-patterns) — My
   Advanced React Component Patterns course.
-- [Frontend Masters](https://frontendmasters.com/workshops/advanced-react-patterns/) — I'm
+- [Frontend Masters](https://frontendmasters.com/workshops/advanced-react-patterns) — I'm
   giving my Advanced Component Patterns workshop in person in Minniapolis in
   April!
 - [Workshop.me](https://workshop.me/2018-07-advanced-react?a=kent) — I'm giving
@@ -112,8 +112,8 @@ I hope this is helpful! Good luck!
 
 **Things to not miss**:
 
-- [CodeSandbox Live!!!](https://medium.com/@compuives/introducing-codesandbox-live-real-time-code-collaboration-in-the-browser-6d508cfc70c9)
+- [CodeSandbox Live!!!](https://medium.com/@CompuIves/introducing-codesandbox-live-real-time-code-collaboration-in-the-browser-6d508cfc70c9)
 - [React Round Up Episode 3](https://devchat.tv/react-round-up/rru-003-advanced-component-patterns-and-downshift-with-kent-c-dodds) — "Advanced
   Component Patterns and Downshift with Kent C. Dodds"
-- [Test Talks Episode 195](https://joecolantonio.com/testtalks/195-javascript-testing-using-jest-with-kent-c-dodds/) — "JavaScript
+- [Test Talks Episode 195](https://joecolantonio.com/testtalks/195-javascript-testing-using-jest-with-kent-c-dodds) — "JavaScript
   Testing Using Jest with Kent C. Dodds"

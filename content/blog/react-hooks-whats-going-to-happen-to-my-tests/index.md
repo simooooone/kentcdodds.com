@@ -16,7 +16,7 @@ bannerCredit:
 
 Current Available Translations:
 
-- [Korean](https://edykim.com/ko/post/react-hooks-whats-going-to-happen-to-my-tests/)
+- [Korean](https://edykim.com/ko/post/react-hooks-whats-going-to-happen-to-my-tests)
 
 One of the most common questions I hear about the upcoming React Hooks feature
 is regarding testing. And I can understand the concern when your tests look like
@@ -333,7 +333,7 @@ function Counter(props) {
 
 Cool, and because we wrote our test the way we did, it's actually still passing.
 Woo! BUT! As we learned from
-"[React Hooks: What's going to happen to render props?](https://blog.kentcdodds.com/8ade1f00f159)"
+"[React Hooks: What's going to happen to render props?](/blog/react-hooks-whats-going-to-happen-to-render-props)"
 custom hooks are a better primitive for code sharing in React. So let's rewrite
 this to a custom hook:
 
@@ -419,9 +419,9 @@ they're both still free):
 - [rescripts](https://github.com/rescripts/rescripts)  —  💥 Use the latest
   react-scripts with custom configurations for Babel, ESLint, TSLint,
   Webpack,... ∞ by [Harry Solovay](https://twitter.com/hsolvz)
-- [Contributing to Open Source on GitHub for beginners](https://www.youtube.com/watch?v=k6KcaMffxac&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) 
+- [Contributing to Open Source on GitHub for beginners](https://youtu.be/k6KcaMffxac&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) 
   —  A talk I gave at my Alma mater (BYU) this last week
-- [Make a SUPER simple personal URL shortener with Netlify](https://www.youtube.com/watch?v=HL6paXyx6hM&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
+- [Make a SUPER simple personal URL shortener with Netlify](https://youtu.be/HL6paXyx6hM&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
   (I'm still livestreaming almost every week day at
   [kcd.im/devtips](https://kcd.im/devtips))
 - [The three browsers holding JavaScript back the most are:](https://twitter.com/jamiebuilds/status/1022568918949408768)...

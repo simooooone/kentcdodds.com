@@ -35,7 +35,7 @@ also `react`, and that's when the trouble started. `downshift`has several tests
 for error cases (errors thrown when validating how you interact with the prop
 getters for example). It has some assertions that an error is thrown when doing
 something wrong when trying to mount downshift.
-[This test](https://github.com/paypal/downshift/blob/702e7b037c27519dae97fa21f5a2aecc649027dd/src/__tests__/downshift.get-label-props.js#L35-L41)
+[This test](https://github.com/downshift-js/downshift/blob/702e7b037c27519dae97fa21f5a2aecc649027dd/src/__tests__/downshift.get-label-props.js#L35-L41)
 in particular resulted in this output:
 
 ```
@@ -59,7 +59,7 @@ Error: Uncaught [Error: downshift: You provided the id of "foo" for your input, 
 
 The funny thing about this though is that the tests all still passed! In
 addition, those logs are coming from a `console.error` call, and
-[the top of that file](https://github.com/paypal/downshift/blob/702e7b037c27519dae97fa21f5a2aecc649027dd/src/__tests__/downshift.get-label-props.js#L5-L12)
+[the top of that file](https://github.com/downshift-js/downshift/blob/702e7b037c27519dae97fa21f5a2aecc649027dd/src/__tests__/downshift.get-label-props.js#L5-L12)
 is mocking `console.error` to make it not log anything at all!
 
 ```js
@@ -101,7 +101,7 @@ files? Check this out. Run the following commands and you'll get a report of the
 code on the `node_modules` directory in the `downshift` project:
 
 ```
-git clone https://github.com/paypal/downshift.git
+git clone https://github.com/downshift-js/downshift.git
 cd downshift
 npm install
 npx cloc ./node_modules
@@ -269,10 +269,10 @@ I hope this is helpful! Good luck!👍
 
 **Things to not miss**:
 
-- [Majestic](https://github.com/Raathigesh/majestic/) by
+- [Majestic](https://github.com/Raathigesh/majestic) by
   [@Raathigesh](https://twitter.com/Raathigesh). A pretty awesome UI for Jest
   tests!
-- [JavaScriptJanuary.com](https://www.javascriptjanuary.com/) — it's going
+- [JavaScriptJanuary.com](https://www.javascriptjanuary.com) — it's going
   strong! There's already over a week's worth of content on there. Check it out!
 - [npm link](https://docs.npmjs.com/cli/link) a command you'll want handy when
   working with `node_modules` :) (thanks for the reminder
@@ -280,11 +280,11 @@ I hope this is helpful! Good luck!👍
 
 I've been on a few podcasts lately:
 
-- [JAMStack Radio](https://www.heavybit.com/library/podcasts/jamstack-radio/):
+- [JAMStack Radio](https://www.heavybit.com/library/podcasts/jamstack-radio):
   [Ep. #23, Introduction to Downshift and Glamorous](https://www.heavybit.com/library/podcasts/jamstack-radio/ep-23-introduction-to-downshift-and-glamorous)
-- [#!hashbang](https://www.youtube.com/playlist?list=PLZ66c9_z3umOuPSGsTu3mfzt6PGZeUyQZ):
-  [HashBang Episode 5: Assert(js) panel: Kent C. Dodds, Justin Searls, Gleb Bahmutov and Brian Mann](https://www.youtube.com/watch?v=ltzNIOF_L3E)
-- [Full Stack Radio](http://www.fullstackradio.com/):
+- [#!hashbang](https://youtube.com/playlist?list=PLZ66c9_z3umOuPSGsTu3mfzt6PGZeUyQZ):
+  [HashBang Episode 5: Assert(js) panel: Kent C. Dodds, Justin Searls, Gleb Bahmutov and Brian Mann](https://youtu.be/ltzNIOF_L3E)
+- [Full Stack Radio](http://www.fullstackradio.com):
   [79: Kent C. Dodds — Building Reusable React Components with Render Props](http://www.fullstackradio.com/79)
-- [Web of Tomorrow](http://www.weboftomorrowpodcast.com/):
+- [Web of Tomorrow](http://www.weboftomorrowpodcast.com):
   [44: How to Jumpstart Your Career — Kent C. Dodds](http://www.weboftomorrowpodcast.com/44)

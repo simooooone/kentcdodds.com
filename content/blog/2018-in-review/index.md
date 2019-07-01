@@ -25,12 +25,12 @@ mostly a secret and surprise 😃).
 > Note: I don't want to bother with trying to sort these in any particular
 > order, so... they're not in any particular order...
 
-## [react-testing-library](https://github.com/kentcdodds/react-testing-library)
+## [react-testing-library](https://github.com/testing-library/react-testing-library)
 
 This year I
-[created](https://github.com/kentcdodds/react-testing-library/commit/4f16c6e6b356fae1ad92f59eebeb1a8000f60714)
+[created](https://github.com/testing-library/react-testing-library/commit/4f16c6e6b356fae1ad92f59eebeb1a8000f60714)
 and
-[introduced react-testing-library](https://blog.kentcdodds.com/introducing-the-react-testing-library-e3a274307e65).
+[introduced react-testing-library](/blog/introducing-the-react-testing-library).
 It has [grown a lot](https://www.npmtrends.com/react-testing-library) since
 then. [The spectrum community](https://spectrum.chat/testing-library) has
 [over 300 members now](https://twitter.com/kentcdodds/status/1079523389553790976).
@@ -57,9 +57,9 @@ for making
 [react-native-testing-library](https://github.com/callstack/react-native-testing-library).
 
 I'm super proud of what we've accomplished here. The
-[react-testing-library all contributors table](https://github.com/kentcdodds/react-testing-library/blob/master/README.md#contributors)
+[react-testing-library all contributors table](https://github.com/testing-library/react-testing-library/blob/master/README.md#contributors)
 lists 63 awesome people, and the
-[dom-testing-library all contributors table](https://github.com/kentcdodds/dom-testing-library/blob/master/README.md#contributors)
+[dom-testing-library all contributors table](https://github.com/testing-library/dom-testing-library/blob/master/README.md#contributors)
 lists 46 (many repeats, but not all). These people are amazing and I really
 appreciate what they've done. I don't want to leave anyone out, but I would like
 to give a special shout out to these folks: [Giorgio](https://twitter.com/Gpx),
@@ -71,9 +71,8 @@ to give a special shout out to these folks: [Giorgio](https://twitter.com/Gpx),
 Creating this open source software and the community of awesome people that has
 been built around it is probably one of my finest accomplishments of 2019. If
 you'd like to hear more about how this software came to be, you can watch
-[S05E12 Modern Web Podcast - Testing](https://www.youtube.com/watch?v=nw-GFMW8LSQ)
-or listen to
-[RRU 043: Testing React Apps Without Testing Implementation Details with Kent C. Dodds](https://devchat.tv/react-round-up/rru-043-testing-react-apps-without-testing-implementation-details-with-kent-c-dodds/).
+[S05E12 Modern Web Podcast - Testing](https://youtu.be/nw-GFMW8LSQ) or listen to
+[RRU 043: Testing React Apps Without Testing Implementation Details with Kent C. Dodds](https://devchat.tv/react-round-up/rru-043-testing-react-apps-without-testing-implementation-details-with-kent-c-dodds).
 
 ## [National Novel Writing Month](https://nanowrimo.org)
 
@@ -135,7 +134,7 @@ This was a HUGE effort by me and the good folks at
 courses + 9 podcast episodes. It was a TON of work and people LOVE it. So I'm
 really happy with this.
 
-## [paypal-scripts](https://blog.kentcdodds.com/automation-without-config-412ab5e47229)
+## [paypal-scripts](/blog/tools-without-config)
 
 I started this project in August of 2017, but most of the work was done in 2018.
 It's basically a single tool that consolidates a bunch of other tools common to
@@ -226,7 +225,7 @@ realm of Open Source that I'd like to mention. Here are a few numbers:
   WOW. 🤯
 - I [deprecated glamorous](https://github.com/paypal/glamorous/issues/419) in
   favor of [emotion.sh](https://emotion.sh)
-- Published v2 and v3 of [downshift](https://github.com/paypal/downshift).
+- Published v2 and v3 of [downshift](https://github.com/downshift-js/downshift).
 - There are now
   [over 2k `.all-contributorsrc` files on GitHub](https://github.com/search?q=.all-contributorsrc+in%3Apath&type=Code&utf8=✓)
   😱
@@ -243,26 +242,26 @@ coherent than others, but altogether they represent a great resource for people
 to learn things from JavaScript to testing to React to Babel to more and more :)
 
 I also have a playlist called
-[Talks and workshops from Kent C. Dodds](https://www.youtube.com/playlist?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
+[Talks and workshops from Kent C. Dodds](https://youtube.com/playlist?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
 with over 60 videos. More on this later.
 
 Altogether, this year I've really been pushing content onto YouTube and
 [hit over 10k subscribers](https://twitter.com/kentcdodds/status/1073589861054070784).
 My videos got over 260k views this year (I am of course excluding
-[my smiley face video](https://www.youtube.com/watch?v=t6q5_7fVjEg)
+[my smiley face video](https://youtu.be/t6q5_7fVjEg)
 [which was stolen](https://github.com/kentcdodds/ama/issues/290) and has 3.7
 million views now).
 
 ## Conferences
 
 I gave a lot of talks this year, you can find all the available recordings on
-[my YouTube playlist](https://www.youtube.com/playlist?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf).
+[my YouTube playlist](https://youtube.com/playlist?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf).
 I spoke at 7 conferences and several meetups. I was especially proud to deliver
-[my first keynote](https://www.youtube.com/watch?v=M9X2qGddHkU&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
+[my first keynote](https://youtu.be/M9X2qGddHkU&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
 at [Chain React](https://infinite.red/ChainReactConf) which was awesome.
 
 I gave
-[a similar talk](https://www.youtube.com/watch?v=AiJ8tRRH0f8&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
+[a similar talk](https://youtu.be/AiJ8tRRH0f8&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
 at [React Rally](https://www.reactrally.com) which is my favorite conference and
 has been a dream of mine since year one.
 
@@ -289,8 +288,8 @@ Here are some other interesting facts/accomplishments from 2018:
   DAYS worth of time of Brandon Sanderson fantasy novels in 2018. I listen at
   2.9x speed, so it amounts to ~10 days of time, but still. I've filled my ears
   with his words this year!
-- I posted 62 new blog posts on [my blog](https://blog.kentcdodds.com) on
-  subjects around JavaScript, Testing, React, as well as career advice.
+- I posted 62 new blog posts on [my blog](/blog) on subjects around JavaScript,
+  Testing, React, as well as career advice.
 - In 2018, I spent most of my course time on testingjavascript.com, but I did
   manage to make a complete update to
   [Advanced React Component Patterns](https://kcd.im/advanced-react) and make
@@ -302,10 +301,10 @@ Here are some other interesting facts/accomplishments from 2018:
 - Back in April, I made a trip to Minneapolis to record workshops for
   [Frontend Masters](https://kcd.im/fem). We made three (almost four) courses
   out of that trip:
-  [Advanced React Patterns](https://frontendmasters.com/courses/advanced-react-patterns/),
-  [Testing React Applications, v2](https://frontendmasters.com/courses/testing-react/),
+  [Advanced React Patterns](https://frontendmasters.com/courses/advanced-react-patterns),
+  [Testing React Applications, v2](https://frontendmasters.com/courses/testing-react),
   and
-  [JavaScript Testing Practices and Principles](https://frontendmasters.com/courses/testing-practices-principles/).
+  [JavaScript Testing Practices and Principles](https://frontendmasters.com/courses/testing-practices-principles).
   I'm really happy about how those turned out!
 - For the first part of the year,
   [Ryan Florence](https://twitter.com/ryanflorence) made
@@ -313,7 +312,7 @@ Here are some other interesting facts/accomplishments from 2018:
   testing, two on advanced react, and one on beginning react) through
   workshop.me and it was awesome (though short-lived).
 - I gave 4 other workshops this year all of which you can find on
-  [my YouTube playlist](https://www.youtube.com/playlist?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf).
+  [my YouTube playlist](https://youtube.com/playlist?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf).
 
 ## What's next in 2019
 
@@ -360,7 +359,7 @@ I wish you the very best and happiest New Year!
 
 **Things to not miss**:
 
-- [RRU 043: Testing React Apps Without Testing Implementation Details with Kent C. Dodds](https://devchat.tv/react-round-up/rru-043-testing-react-apps-without-testing-implementation-details-with-kent-c-dodds/) -
+- [RRU 043: Testing React Apps Without Testing Implementation Details with Kent C. Dodds](https://devchat.tv/react-round-up/rru-043-testing-react-apps-without-testing-implementation-details-with-kent-c-dodds) -
   The ReactRoundUp podcast had me on to talk about testing!
 - [Testing Software](https://mhme-blog.now.sh/2018/december/testing-software.html) -
   Great insights here by [Matt Hamlin](https://mobile.twitter.com/immatthamlin)

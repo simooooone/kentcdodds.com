@@ -18,7 +18,7 @@ bannerCredit:
 
 Last year when I was using enzyme (like everyone else at the time), I stepped
 carefully around certain APIs in enzyme. I
-[completely avoided shallow rendering](https://blog.kentcdodds.com/why-i-never-use-shallow-rendering-c08851a68bb7),
+[completely avoided shallow rendering](/blog/why-i-never-use-shallow-rendering),
 _never_ used APIs like `instance()`, `state()`, or `find('ComponentName')`. And
 in code reviews of other people's pull requests I explained again and again why
 it's important to avoid these APIs. The reason is they each allow your test to
@@ -73,7 +73,7 @@ And here's a test that tests implementation details:
 // __tests__/accordion.enzyme.js
 import React from 'react'
 // if you're wondering why not shallow,
-// then please read blog.kentcdodds.com/c08851a68bb7
+// then please read https://kcd.im/shallow
 import Enzyme, {mount} from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
 import Accordion from '../accordion'
@@ -228,14 +228,14 @@ testing implementation details!
 positives and negatives, I'd almost rather not write tests at all. DELETE ALL
 THE TESTS! Wouldn't it be nice if we had a tool that had a wider
 [pit](https://twitter.com/kentcdodds/status/859994199738900480) of
-[success](https://blog.codinghorror.com/falling-into-the-pit-of-success/)? Yes
-it would! And guess what, we DO have such a tool!
+[success](https://blog.codinghorror.com/falling-into-the-pit-of-success)? Yes it
+would! And guess what, we DO have such a tool!
 
 ### Implementation detail free testing
 
 So we could rewrite all these tests with enzyme, limiting ourselves to APIs that
 are free of implementation details, but instead, I'm just going to use
-[react-testing-library](https://github.com/kentcdodds/react-testing-library)
+[react-testing-library](https://github.com/testing-library/react-testing-library)
 which will make it very difficult to include implementation details in my tests.
 Let's check that out now!
 
@@ -296,7 +296,7 @@ component. So our test should typically only see/interact with the props that
 are passed, and the rendered output.
 
 This is precisely what the
-[react-testing-library](https://github.com/kentcdodds/react-testing-library)
+[react-testing-library](https://github.com/testing-library/react-testing-library)
 test does. It passes fake props to the Accordion, then it interacts with the
 rendered output by querying the output for the contents that will be displayed
 to the user (or ensuring that it wont be displayed) and clicking the buttons
@@ -317,12 +317,15 @@ application code to consider the tests. What a complete waste of time. I don't
 want tests that are written for their own sake. _Automated tests should verify
 that the application code works for the production users._
 
-> _[The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106) — me_
+> _[The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106)
+>  — me_
+
+> Read more about this in [Avoid the Test User](/blog/avoid-the-test-user).
 
 Oh, and [React Hooks](https://reactjs.org/hooks) got you all excited? If you
 rewrite that accordion component to use React hooks, the enzyme test fails
 terribly, while the
-[react-testing-library](https://github.com/kentcdodds/react-testing-library)
+[react-testing-library](https://github.com/testing-library/react-testing-library)
 test continues to work.
 
 ![happy goats](./images/0.gif)
@@ -349,7 +352,7 @@ will naturally avoid implementation details:
 
 I hope that's helpful to you! If you really want to take your testing to the
 next level, then I definitely recommend you get a Pro license for
-[TestingJavaScript.com](https://testingjavascript.com/)🏆
+[TestingJavaScript.com](https://testingjavascript.com)🏆
 
 Good luck!
 
@@ -359,20 +362,3 @@ P.S. If you'd like to play around with all this,
 P.S.P.S. As an exercise for you... What happens to that second enzyme test if I
 change the name of the `AccordionContents` component? {insert biggest eye roll
 ever}
-
-**Things to not miss**:
-
-- [React Hooks and Suspense Playlist on egghead.io](http://kcd.im/hooks-and-suspense) — I
-  made a free playlist of ~35 minutes worth of videos to demo React Hooks and
-  Suspense. Includes two videos about testing hooks!
-- [WPACK.IO](https://wpack.io/) — *wpack.io is a fine-tuned webpack/browser-sync
-  configuration made specifically for WordPress Theme and Plugin Development. It
-  gives a fine Developer Experience (DX) and a single dev dependency for all
-  your javascript and css/sass/scss bundling.*
-- [Lessons from Java for testing in React](https://www.vidyasource.com/blog/2018/10/21/lessons-from-java-for-testing-in-react/) — Really
-  interesting take on my
-  [shallow rendering](https://blog.kentcdodds.com/why-i-never-use-shallow-rendering-c08851a68bb7)
-  blog post that has a number of great gems.
-- ["A brief analysis and comparison of the CSS for Twitter's PWA vs Twitter's legacy desktop website. The difference is dramatic and I'll touch on some reasons why."](https://twitter.com/necolas/status/1058949372837122048)
-  (A very interesting thread by [@necolas](https://twitter.com/necolas) I
-  recommend you give a read).

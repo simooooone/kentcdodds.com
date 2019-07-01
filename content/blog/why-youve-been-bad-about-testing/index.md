@@ -44,7 +44,7 @@ component and your test breaks. 😡 I wouldn't want to write tests either.
 When I got started with testing years ago, I struggled. I struggled hard. I've
 spent countless hours learning, building, and rebuilding tools. I even gave a
 _full hour_ talk called
-["ES6, Webpack, Karma, and Code Coverage"](https://kentcdodds.com/talks/#es6-webpack-karma-and-code-coverage).
+["ES6, Webpack, Karma, and Code Coverage"](/talks/#es6-webpack-karma-and-code-coverage).
 It took a full 60 minutes to explain how to make these tools play nicely
 together. It took dozens more hours behind the scenes to figure out what I
 explain in that talk.
@@ -85,7 +85,7 @@ tactics for getting your testing skills up to date.
 
 **Things to not miss**:
 
-- [TestingJavaScript.com](https://testingjavascript.com/) — This is the huge
+- [TestingJavaScript.com](https://testingjavascript.com) — This is the huge
   thing that I wont stop talking about 😉
 - [`react-suspense-starter`](https://github.com/palmerhq/react-suspense-starter):
   If you haven't had a chance to checkout suspense yet and play around with it,

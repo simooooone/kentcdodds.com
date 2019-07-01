@@ -23,10 +23,10 @@ Read more about the concept of control props in
 [the react docs](https://reactjs.org/docs/forms.html).
 
 You may not have had much experience with the idea of a
-[state reducer](https://blog.kentcdodds.com/the-state-reducer-pattern--b40316cfac57).
-In contrast to control props, built-in react elements don’t support state
-reducers (though I hear that reason-react does). My library
-[downshift](https://github.com/paypal/downshift) supports a state reducer.
+[state reducer](/blog/the-state-reducer-pattern). In contrast to control props,
+built-in react elements don’t support state reducers (though I hear that
+reason-react does). My library
+[downshift](https://github.com/downshift-js/downshift) supports a state reducer.
 Here’s an example of using it to prevent the menu from closing after an item is
 selected:
 
@@ -47,7 +47,7 @@ const ui = (
 ```
 
 You can learn how to implement these patterns from
-[my Advanced React Component Patterns material](https://kentcdodds.com/workshops/#advanced-react-component-patterns).
+[my Advanced React Component Patterns material](/workshops/#advanced-react-component-patterns).
 
 Both of these patterns help you expose state management to component consumers
 and while they have significantly different APIs, they allow much of the same
@@ -168,21 +168,21 @@ Good luck!
 **Learn more about React from me**:
 
 - [egghead.io (beginners)](http://kcd.im/beginner-react) — My Beginner’s Guide
-  to React absolutely _free_ on [egghead.io](http://egghead.io/).
+  to React absolutely _free_ on [egghead.io](http://egghead.io).
 - [egghead.io (advanced)](http://kcd.im/advanced-react) — My Advanced React
-  Component Patterns course available on [egghead.io](http://egghead.io/) today!
-- [Frontend Masters](https://frontendmasters.com/workshops/advanced-react-patterns/) — My
+  Component Patterns course available on [egghead.io](http://egghead.io) today!
+- [Frontend Masters](https://frontendmasters.com/workshops/advanced-react-patterns) — My
   Advanced React Patterns workshop
 
 **Things to not miss**:
 
-- [**DevTips with Kent**](https://www.youtube.com/playlist?list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
+- [**DevTips with Kent**](https://youtube.com/playlist?list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
   ❗️❗️❗️ I’ve started a new series of daily short videos about software
   development. I livestream them every weekday. Check out the playlist of videos
   I have up there already including
-  [npm tips](https://www.youtube.com/watch?v=Dli_FisDdVU&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u),
-  [TDD with react-testing-library](https://www.youtube.com/watch?v=kCR3JAR7CHE&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u),
-  [webpack HMR](https://www.youtube.com/watch?v=JGXAvgVHC5A&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u),
+  [npm tips](https://youtu.be/Dli_FisDdVU&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u),
+  [TDD with react-testing-library](https://youtu.be/kCR3JAR7CHE&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u),
+  [webpack HMR](https://youtu.be/JGXAvgVHC5A&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u),
   and more!
 - [A bitter guide to open source](https://medium.com/@ken_wheeler/a-bitter-guide-to-open-source-a8e3b6a3c1c4)
   by [Ken Wheeler](https://twitter.com/ken_wheeler). It’s **incredibly**

@@ -41,6 +41,7 @@ function UpcomingWorkshops({events, headline}) {
                 key={event.slug}
                 startTime={event.startTime}
                 endTime={event.endTime}
+                location={event.location}
                 discount={discount}
               />
             )

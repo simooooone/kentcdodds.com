@@ -14,12 +14,12 @@ bannerCredit: >-
 Last night I got two emails requesting webpack support. This is not new nor
 surprising. I get support emails _all the time_ (as I'm writing this, I just got
 another support request via gitter on an old library I used to maintain). I
-think it has to do with all the [workshops](https://kentcdodds.com/workshops/)
-and [talks](https://kentcdodds.com/talks/) I've given. People have questions
-about the stuff I create and want help with it. Totally understandable. When I
-have a question, I'd much rather talk to an expert on the subject than read
-generic documentation or outdated tutorials (this is one of the reasons that I
-do my [tech chats](https://github.com/kentcdodds/ama/issues/125)).
+think it has to do with all the [workshops](/workshops) and [talks](/talks) I've
+given. People have questions about the stuff I create and want help with it.
+Totally understandable. When I have a question, I'd much rather talk to an
+expert on the subject than read generic documentation or outdated tutorials
+(this is one of the reasons that I do my
+[tech chats](https://github.com/kentcdodds/ama/issues/125)).
 
 Unfortunately, I don't have time to field all of the support requests that I get
 via email, GitHub, Twitter, Gitter, Slack, etc... It's not that I don't want to
@@ -41,7 +41,7 @@ the most amount of people at once.
 
 _I almost never respond to direct support request emails._ So instead, post your
 ([Minimal, Complete, and Verifiable](https://stackoverflow.com/help/mcve))
-question on a relevant forum (like [StackOverflow](http://stackoverflow.com/))
+question on a relevant forum (like [StackOverflow](http://stackoverflow.com))
 and feel free to [tweet](https://twitter.com/kentcdodds) the link to me (or ask
 me on [my AMA](https://github.com/kentcdodds/ama)). I can't promise that I'll
 find time to look at it, but hundreds of other developers will see it so you're

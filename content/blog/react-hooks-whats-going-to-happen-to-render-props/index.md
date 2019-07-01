@@ -18,16 +18,16 @@ bannerCredit:
 
 Current Available Translations:
 
-- [Korean](https://edykim.com/ko/post/react-hooks-whats-going-to-happen-to-render-props/)
+- [Korean](https://edykim.com/ko/post/react-hooks-whats-going-to-happen-to-render-props)
 
 About a year ago, I published
 ["How to give rendering control to users with prop getters"](/blog/how-to-give-rendering-control-to-users-with-prop-getters).
 In that post, I show the entire implementation (at the time) of
 [`react-toggled`](https://github.com/kentcdodds/react-toggled) which I actually
 built for the sole purpose of teaching some of the patterns that I used in
-[`downshift`](https://github.com/paypal/downshift). It's a much smaller and
-simpler component that implements many of the same patterns as downshift so it
-served as a great way to teach the prop getters pattern.
+[`downshift`](https://github.com/downshift-js/downshift). It's a much smaller
+and simpler component that implements many of the same patterns as downshift so
+it served as a great way to teach the prop getters pattern.
 
 Both react-toggled and downshift use the render prop pattern as a mechanism for
 React component logic code sharing. As I explained in my blog post
@@ -159,7 +159,7 @@ custom hooks!
 There's a little more to this (like how do we port the control props pattern to
 react hooks for example). I'm going to leave that to you to discover. Once
 you've tried it out for a little bit, then
-[watch me do it](https://www.youtube.com/watch?v=_eVyLVFlSQk&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u).
+[watch me do it](https://youtu.be/_eVyLVFlSQk&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u).
 There's a catch with the way we've been testing things a bit that change
 slightly with hooks (thanks to JavaScript closures).
 
@@ -168,13 +168,13 @@ slightly with hooks (thanks to JavaScript closures).
 Ok, so we can refactor our components to use hooks, and even continue to export
 react components with a render prop-based API (you might be interested, you may
 even consider going all out with
-[the hydra pattern](https://americanexpress.io/hydra/)). But let's imagine we're
+[the hydra pattern](https://americanexpress.io/hydra)). But let's imagine we're
 now in a future where we don't need render props for logic reuse and everyone's
 using hooks. Is there any reason to continue writing or using components that
 expose a render props API?
 
 YES! Observe! Here's
-[an example of using downshift with react-virtualized](https://github.com/paypal/downshift/blob/9b3467dce2be59832765277570857de5679d8392/stories/examples/windowing-with-react-virtualized.js).
+[an example of using downshift with react-virtualized](https://github.com/downshift-js/downshift/blob/9b3467dce2be59832765277570857de5679d8392/stories/examples/windowing-with-react-virtualized.js).
 Here's the relevant bit:
 
 ```jsx
@@ -222,7 +222,7 @@ Also, check out
   The package `event-stream` was published with a dependency that tried to steal
   bitcoin wallets. `event-stream` is downloaded ~2million times per week, so
   it's likely you've been infected. Check
-  [the npm blog](https://blog.npmjs.org/), I'm sure they'll post more about it
+  [the npm blog](https://blog.npmjs.org), I'm sure they'll post more about it
   soon.
 - [React Podcast: 29: Don't Rewrite Your App for Hooks and Suspense with Jared Palmer](https://reactpodcast.simplecast.fm/29)
 - [`htm`](https://github.com/developit/htm) by
@@ -232,6 +232,6 @@ Also, check out
   can do (like map an array) is a major plus :)
 - [Announcing native support for the css prop in styled-components 🎉](https://medium.com/styled-components/announcing-native-support-for-the-css-prop-in-styled-components-245ca5252feb) — This
   was always one of my biggest grievances with styled-components and a big
-  reason I preferred [emotion](https://emotion.sh/). I still prefer emotion, but
+  reason I preferred [emotion](https://emotion.sh). I still prefer emotion, but
   I'm really excited that styled-components has this feature now! Stop naming
   things "Container" and "Wrapper!"

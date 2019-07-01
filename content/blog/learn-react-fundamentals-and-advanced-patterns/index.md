@@ -16,13 +16,13 @@ bannerCredit:
 ---
 
 I couldn't be more excited to introduce you to what I can call my best work to
-date: Two new video courses available now on [egghead.io](http://egghead.io/)!
+date: Two new video courses available now on [egghead.io](http://egghead.io)!
 The beginner material is **free forever** and the advanced stuff is worth a
 subscription so I encourage you to give them a look!
 
 ### [The Beginner's Guide to ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs)
 
-https://www.youtube.com/watch?v=6JMIEhX-r1c
+https://youtube.com/watch?v=6JMIEhX-r1c
 
 1.  [Introduction to The Beginner's Guide to ReactJS](https://egghead.io/lessons/react-introduction-to-the-beginner-s-guide-to-reactjs)
     (2:07)
@@ -62,8 +62,8 @@ https://www.youtube.com/watch?v=6JMIEhX-r1c
 19. [Build and deploy a React Application](https://egghead.io/lessons/egghead-build-and-deploy-a-react-application)
     (3:02)
 
-This course is for [React](https://reactjs.org/) newbies and those looking to
-get a better understanding of React fundamentals. With a focus on React
+This course is for [React](https://reactjs.org) newbies and those looking to get
+a better understanding of React fundamentals. With a focus on React
 fundamentals, you'll come out of this course knowing what problems React can
 solve for you and how it goes about solving those problems. You will have a good
 grasp on what JSX is and how it translates to regular JavaScript function calls
@@ -74,13 +74,13 @@ you **keep your focus on learning React and not distracted by all the tools that
 make production applications work.** The course wraps up with a lesson on how to
 move from these `index.html` files to a more production ready development
 environment and even how to deploy your app to a great service like
-[Netlify](https://www.netlify.com/).
+[Netlify](https://www.netlify.com).
 
 [Enjoy!](https://egghead.io/courses/the-beginner-s-guide-to-reactjs)
 
 ### [Advanced React Component Patterns](https://egghead.io/courses/advanced-react-component-patterns)
 
-https://www.youtube.com/watch?v=0aDl0ercM5I
+https://youtube.com/watch?v=0aDl0ercM5I
 
 1.  [Introducing Advanced React Component Patterns](https://egghead.io/lessons/react-introducing-advanced-react-component-patterns)
     (1:44)
@@ -141,7 +141,7 @@ simpler, and more fun to build, use, and maintain.
 ### Free! 🤑
 
 [The Beginner's course](https://egghead.io/courses/the-beginner-s-guide-to-reactjs)
-is joining the ever growing [egghead.io](http://egghead.io/)
+is joining the ever growing [egghead.io](http://egghead.io)
 "[Community Resources](https://egghead.io/community/resources)" which means
 **_it will be free forever_**! I'm totally amazed by egghead and all the free
 stuff they sponsor. Thank you egghead!!
@@ -192,12 +192,12 @@ anything or enjoy the courses, I would ask you to do any of the following:
 1.  [Become an egghead.io subscriber](https://egghead.io/pricing) to help
     support the community resources _and_ get access to the 2500+ videos already
     on there!
-2.  [Tweet this blog post](https://twitter.com/intent/tweet?text=%F0%9F%8E%81%E2%9A%9B%EF%B8%8F%20%E2%80%9CLearn%20React%20Fundamentals%20and%20Advanced%20Patterns%E2%80%9D%20by%20%40kentcdodds%20https%3A%2F%2Fblog.kentcdodds.com%2Flearn-react-fundamentals-and-advanced-patterns-eac90341c9db%20%F0%9F%8E%81%E2%9A%9B%EF%B8%8F)!
+2.  [Tweet this blog post](https://twitter.com/intent/tweet?text=🎁⚛️%20“Learn%20React%20Fundamentals%20and%20Advanced%20Patterns”%20by%20@kentcdodds%20https://kentcdodds.com/blog/learn-react-fundamentals-and-advanced-patterns%20🎁⚛️)!
     Or
     [retweet my tweet](https://twitter.com/kentcdodds/status/937686244045176832)
     about it :)
 3.  Upvote and discuss this blog post and the courses
-    [on Reddit](https://www.reddit.com/r/reactjs/comments/7hq91g/learn_react_fundamentals_and_advanced_patterns/)
+    [on Reddit](https://www.reddit.com/r/reactjs/comments/7hq91g/learn_react_fundamentals_and_advanced_patterns)
 4.  [Follow me on twitter](https://twitter.com/kentcdodds) to keep up with what
     I work on next
 5.  [Subscribe to my weekly newsletter 💌](http://kcd.im/news)

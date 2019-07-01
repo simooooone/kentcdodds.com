@@ -18,9 +18,9 @@ bannerCredit:
 
 With the release of my
 [Advanced React Component Patterns](https://egghead.io/courses/advanced-react-component-patterns)
-course on [egghead.io](http://egghead.io/), a lot of people have been asking me
+course on [egghead.io](http://egghead.io), a lot of people have been asking me
 about render props. Specifically with regards to testing. Maybe eventually I'll
-create a course on [egghead.io](http://egghead.io/) about testing react
+create a course on [egghead.io](http://egghead.io) about testing react
 components. Until then, I've decided to write this about some approaches that
 could help you when testing a component that renders a render prop component :)
 
@@ -94,7 +94,7 @@ export default FruitAutocomplete
 
 First off, I should say that render props are really just an implementation
 detail. So if you're writing E2E tests (with something like the amazing
-[Cypress.io](http://cypress.io/)), then you shouldn't have to test anything any
+[Cypress.io](http://cypress.io)), then you shouldn't have to test anything any
 differently whether you're using render props or anything else. You just
 interact with the component the way the user would (type in the input, select an
 item, etc.). That may be obvious, but I think that brings up a pretty important
@@ -106,16 +106,15 @@ implementation details a little more.
 ![UI, Service, Unit](./images/0.png)
 
 > _Sorry, no example of E2E tests today. Maybe when I publish this to_ >
-> [_my blog_](https://blog.kentcdodds.com/) _I'll have some..._
+> [_my blog_](/blog) _I'll have some..._
 
 ### Integration Tests
 
-That said,
-[I suggest focusing on integration tests](https://blog.kentcdodds.com/write-tests-not-too-many-mostly-integration-5e8c7fff591c).
-With an integration test, you likewise don't have to change too much about how
-you test the component. Here are the integration tests from the repo. You'll
-notice that there's no indication that the `FruitAutocomplete` component is
-implemented with a render prop component (an implementation detail):
+That said, [I suggest focusing on integration tests](/blog/write-tests). With an
+integration test, you likewise don't have to change too much about how you test
+the component. Here are the integration tests from the repo. You'll notice that
+there's no indication that the `FruitAutocomplete` component is implemented with
+a render prop component (an implementation detail):
 
 ```jsx
 import React from 'react'
@@ -295,17 +294,16 @@ I hope this is helpful to you! Good luck!
 
 **Things to not miss**:
 
-- [Learn, Build, and Teach with Kent C. Dodds](http://itcareerenergizer.com/e35/)
-  on [I.T. Career Energizer](http://itcareerenergizer.com/) — You can find my
+- [Learn, Build, and Teach with Kent C. Dodds](http://itcareerenergizer.com/e35)
+  on [I.T. Career Energizer](http://itcareerenergizer.com) — You can find my
   other appearances on podcasts and things on
-  [my website appearances page](https://kentcdodds.com/appearances/) 🎙
+  [my website appearances page](/appearances) 🎙
 - [ReactJS RFCs repo](https://github.com/reactjs/rfcs) — RFCs for changes to
   React. Check it out. It already has a few very interesting pull requests.
-- [Learn React Fundamentals 🆓 and Advanced Patterns ⚛️ 🎁](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db) — If
+- [Learn React Fundamentals 🆓 and Advanced Patterns ⚛️ 🎁](/blog/learn-react-fundamentals-and-advanced-patterns) — If
   you've missed this, then you've either just started following me or you
   haven't been paying attention 😅
-- [React 🎄](https://react.holiday/) — "This is a React advent thingy; the whole
-  25 days, 25 lessons deal." By
-  [michael chan](https://medium.com/u/49e1066348ce). It's awesome and it's a
-  great companion to my free
+- [React 🎄](https://react.holiday) — "This is a React advent thingy; the whole
+  25 days, 25 lessons deal." By [Michael Chan](https://twitter.com/chantastic).
+  It's awesome and it's a great companion to my free
   [Beginner's Guide to ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs).

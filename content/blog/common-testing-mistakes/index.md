@@ -18,7 +18,7 @@ bannerCredit:
 ### Mistake Number 0
 
 One of the biggest mistakes you could make would be missing out on my full
-[Testing JS course](https://testingjavascript.com/). (see what I did there?)
+[Testing JS course](https://testingjavascript.com). (see what I did there?)
 
 ### Mistake Number 1: Testing Implementation Details
 
@@ -69,7 +69,7 @@ These kinds of tests are the worst to maintain because you're constantly
 updating them (due to point #2), and they don't even give you solid confidence
 (due to point #1).
 
-In [my course](https://testingjavascript.com/) I'll show you the right way to
+In [my course](https://testingjavascript.com) I'll show you the right way to
 write tests and avoid this common mistake.
 
 ### Mistake Number 2: 100% code coverage
@@ -111,7 +111,7 @@ tests are not.
 > due to the fact that they're shared in multiple projects._
 
 I talked a bit about this in
-[my livestream](https://www.youtube.com/watch?v=O2tsvUJT09U&index=9&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u&t=0s)
+[my livestream](https://youtu.be/O2tsvUJT09U&index=9&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u&t=0s)
 the other day, check it out!
 
 ### Mistake Number 3: Repeat Testing
@@ -129,10 +129,10 @@ than you've likely experienced in the past. Repeat testing is a common mistake
 that people make when writing E2E tests that contribute to the poor performance
 and reliability.
 
-[Tests should always work in isolation](https://blog.kentcdodds.com/test-isolation-with-react-6962d3f13d1f).
-So that means every test should be executed as a different user. So every test
-will need to register and login as a brand new user right? Right. So you need to
-have a few page objects for the registration and login pages because you'll be
+[Tests should always work in isolation](/blog/test-isolation-with-react). So
+that means every test should be executed as a different user. So every test will
+need to register and login as a brand new user right? Right. So you need to have
+a few page objects for the registration and login pages because you'll be
 running through those pages in every test right? WRONG! That's the mistake!
 
 Let's take a step back. Why are you writing tests? So you can ship your

@@ -20,7 +20,7 @@ tests for specific scenarios, and so on. But knowing _how_ to write tests is
 only half the battle to achieve confidence in your application. Knowing _what_
 to test is the other–very important–battle.
 
-In my [workshop material](https://kentcdodds.com/workshops) and on
+In my [workshop material](/workshops) and on
 [TestingJavaScript.com](https://testingjavascript.com), I do talk about how to
 know what to test, but I get asked about this enough that I thought it would be
 good to write a blog post about it. So here you go!
@@ -286,8 +286,8 @@ time.
 
 > For more on establishing a culture of testing and reasonable code coverage
 > targets, I suggest watching [Aaron Abramov's](https://twitter.com/aarondjents)
-> talk at [AssertJS 2018](https://2018.assertjs.com/):
-> [Establishing testing patterns with software design principles](https://www.youtube.com/watch?v=_pnW-JjmyXE&list=PLZ66c9_z3umNSrKSb5cmpxdXZcIPNvKGw)
+> talk at [AssertJS 2018](https://2018.assertjs.com):
+> [Establishing testing patterns with software design principles](https://youtu.be/_pnW-JjmyXE&list=PLZ66c9_z3umNSrKSb5cmpxdXZcIPNvKGw)
 
 <!-- force a break between these comments... -->
 

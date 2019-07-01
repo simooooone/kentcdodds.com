@@ -13,7 +13,7 @@ bannerCredit:
   [Unsplash](https://unsplash.com)'
 ---
 
-I spent the last week at [React Rally](https://www.reactrally.com/) in Salt Lake
+I spent the last week at [React Rally](https://www.reactrally.com) in Salt Lake
 City. It was an awesome experience. It's easily my favorite conference. I've
 been to at least two dozen unique conferences. Here are some of the reasons
 React Rally is my favorite:
@@ -103,7 +103,7 @@ I think :)
 
 This is a subject unto itself (I actually talked about it in last week's
 newsletter
-["Why and How I started public speaking"](https://blog.kentcdodds.com/why-and-how-i-started-public-speaking-d5ae78303707)),
+["Why and How I started public speaking"](/blog/why-and-how-i-started-public-speaking)),
 but I would encourage you to get involved in speaking at conferences. This does
 add a whole new layer of stress to your experience, but there are a great deal
 of benefits as well. I definitely encourage speaking as a way to get to attend
@@ -128,10 +128,10 @@ to go.
 - [tinker.macro](https://github.com/bradlc/tinker.macro) by
   [Brad Cornes](https://twitter.com/bradlc) is an amazing PHP in JS macros for
   babel-plugin-macros. How cool!?
-- [Deploying ES2015 code in Production Today](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/) — A
+- [Deploying ES2015 code in Production Today](https://philipwalton.com/articles/deploying-es2015-code-in-production-today) — A
   remarkably simple method for deploying ES5 and ES2015 code to browsers based
   on whether they support `<script type="module">`. See also:
-  [bundle.sh](https://bundle.sh/).
+  [bundle.sh](https://bundle.sh).
 - [`next-mdx-blog`](https://github.com/johnlindquist/next-mdx-blog) - an example
   by [John Lindquist](https://twitter.com/johnlindquist). Uses
   [`preval`](https://github.com/kentcdodds/babel-plugin-preval) to run mdx.
