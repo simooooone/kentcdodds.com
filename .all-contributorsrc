@@ -564,6 +564,33 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "itsknob",
+      "name": "Stephen Reilly",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/8973405?v=4",
+      "profile": "https://www.stephenreilly.dev",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "mutalis",
+      "name": "Mutalis",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11839?v=4",
+      "profile": "https://github.com/mutalis",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "jaimemendozadev",
+      "name": "Jaime Mendoza",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5395811?v=4",
+      "profile": "https://jaimemendoza.com/",
+      "contributions": [
+        "content"
+      ]
     }
   ]
 }
