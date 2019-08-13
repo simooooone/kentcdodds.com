@@ -320,7 +320,7 @@ jest.mock('react-transition-group', () => {
 
 test('you can mock things with jest.mock', () => {
   const {getByText, queryByText} = render(<HiddenMessage initialShow={true} />)
-  const toggleButton = getByText('Toggle')
+  const toggleButton = getByText(/toggle/i)
 
   const context = expect.any(Object)
   const children = expect.any(Object)
@@ -330,13 +330,13 @@ test('you can mock things with jest.mock', () => {
     {in: true, ...defaultProps},
     context,
   )
-  expect(getByText('Hello world')).not.toBeNull()
+  expect(getByText(/hello world/i)).not.toBeNull()
 
   CSSTransition.mockClear()
 
   fireEvent.click(toggleButton)
 
-  expect(queryByText('Hello world')).toBeNull()
+  expect(queryByText(/hello world/i)).toBeNull()
   expect(CSSTransition).toHaveBeenCalledWith(
     {in: false, ...defaultProps},
     context,
@@ -348,7 +348,7 @@ test('you can mock things with jest.mock', () => {
 
 A few weeks ago, my [DevTipsWithKent](http://kcd.im/devtips) (my weekdaily
 livestream on [YouTube](http://kcd.im/youtube)) I livestreamed
-"[Migrating from shallow rendering react components to explicit component mocks](https://youtu.be/LHUdxkThTM0&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)".
+"[Migrating from shallow rendering react components to explicit component mocks](https://youtu.be/LHUdxkThTM0?list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)".
 In that I demonstrate some of the pitfalls of shallow rendering I describe above
 as well as how to use jest mocking instead.
 
@@ -391,10 +391,10 @@ I hope that helps!
   new on [egghead.io](http://egghead.io). It's a recording of one of my talks
   especially for [egghead.io](http://egghead.io). I think you'll really enjoy it
   (and it's 🆓)
-- [Write tests. Not too many. Mostly integration.](https://youtu.be/Fha2bVoC8SE&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — My
+- [Write tests. Not too many. Mostly integration.](https://youtu.be/Fha2bVoC8SE?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — My
   talk at Assert.js conference
   ([and here's the blog post](http://kcd.im/write-tests))
-- [Testing Practices and Principles](https://youtu.be/VQZx1Z3sW0E&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — A
+- [Testing Practices and Principles](https://youtu.be/VQZx1Z3sW0E?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — A
   recording of my workshop at Assert.js
 
 **Things to not miss**:
