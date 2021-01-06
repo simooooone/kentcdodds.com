@@ -1,5 +1,5 @@
-import React from 'react'
-import {css} from '@emotion/core'
+import * as React from 'react'
+import {css} from '@emotion/react'
 import Link from '../link'
 import theme from '../../../config/theme'
 import {rhythm} from '../../lib/typography'
@@ -19,7 +19,7 @@ function Workshop({title, description, url, tech}) {
     )
   }
   return (
-    <Link to={url}>
+    <Link css={{cursor: 'pointer'}} to={url}>
       <div
         css={css`
           ${styles}

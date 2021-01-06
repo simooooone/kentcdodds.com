@@ -1,5 +1,5 @@
-import React from 'react'
-import {css} from '@emotion/core'
+import * as React from 'react'
+import {css} from '@emotion/react'
 import theme from '../../config/theme'
 import {bpMaxMD, bpMaxSM} from '../lib/breakpoints'
 import {rhythm, fonts} from '../lib/typography'
@@ -17,6 +17,8 @@ function Hero({
   background = `url(${heroImageRight}), url(${heroImageLeft}),
   linear-gradient(-213deg, #5e31dc 0%, #3155dc 100%)`,
   image = `${photoOfKent}`,
+  headerColor, // pluk this out of the props so it's not applied to the section
+  ...props
 }) {
   return (
     <section
@@ -43,15 +45,14 @@ function Hero({
           padding-top: 60px;
         }
       `}
+      {...props}
     >
-      {children}
       <Container
         css={css`
           display: flex;
           flex-direction: row;
           align-items: center;
           justify-content: space-between;
-          //justify-content: center;
           padding-bottom: 0;
           ${bpMaxMD} {
             flex-direction: column;
@@ -68,18 +69,17 @@ function Hero({
               visibility: visible;
               width: 250px;
               height: 250px;
-              //background: #241d44;
-              ${image === photoOfKent &&
-                `
-                width: 160px;
-              height: 160px;
-              overflow: 'hidden';
-              border-radius: 50%;
-              background: #4b4ddf;
-              `}
+              ${image === photoOfKent
+                ? `
+                      width: 160px;
+                      height: 160px;
+                      overflow: 'hidden';
+                      border-radius: 50%;
+                      background: #4b4ddf;
+                    `
+                : null}
               background-image: url(${image});
               background-size: cover;
-              background-position-y: 10px;
               background-repeat: no-repeat;
               margin-bottom: 25px;
             }
@@ -101,7 +101,6 @@ function Hero({
               font-size: 30px;
               height: 100%;
               display: flex;
-              //align-self: center;
               padding-bottom: ${image === photoOfKent ? '40px' : '0'};
             `}
           >
@@ -129,6 +128,7 @@ function Hero({
               {text}
             </Markdown>
           )}
+          {children}
         </div>
         <div
           css={{
@@ -142,11 +142,13 @@ function Hero({
             },
           }}
         >
-          <img
-            src={image}
-            alt="Kent C. Dodds"
-            css={{maxWidth: '100%', marginBottom: 0}}
-          />
+          {image && (
+            <img
+              src={image}
+              alt="Kent C. Dodds"
+              css={{maxWidth: '100%', marginBottom: 0}}
+            />
+          )}
         </div>
       </Container>
     </section>

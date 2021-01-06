@@ -1,7 +1,7 @@
-import React from 'react'
+import * as React from 'react'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
-import {css} from '@emotion/core'
+import {css} from '@emotion/react'
 import theme from '../../../config/theme'
 import styled from '@emotion/styled'
 import {rhythm} from '../../lib/typography'
@@ -178,7 +178,8 @@ function WorkshopInterestForm({style, subscribeToTag, title}) {
           }}
           validationSchema={SubscribeSchema}
           onSubmit={setValues}
-          render={() => (
+        >
+          {() => (
             <div
               css={css`
                 display: flex;
@@ -242,7 +243,7 @@ function WorkshopInterestForm({style, subscribeToTag, title}) {
               </StyledForm>
             </div>
           )}
-        />
+        </Formik>
       )}
       {submitted && !pending && <PostSubmissionMessage response={response} />}
       {errorMessage && <div>{errorMessage}</div>}

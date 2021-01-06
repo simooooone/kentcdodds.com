@@ -1,6 +1,8 @@
 const path = require('path')
 const config = require('./config/website')
-const proxy = require('http-proxy-middleware')
+const {createProxyMiddleware} = require('http-proxy-middleware')
+
+const eggheadTransformer = require('./other/embedder-transformers/egghead')
 
 const here = (...p) => path.join(__dirname, ...p)
 
@@ -21,7 +23,7 @@ module.exports = {
   developMiddleware: app => {
     app.use(
       '/.netlify/functions/',
-      proxy({
+      createProxyMiddleware({
         target: 'http://localhost:9000',
         pathRewrite: {
           '/.netlify/functions/': '',
@@ -101,13 +103,28 @@ module.exports = {
         gatsbyRemarkPlugins: [
           {resolve: 'gatsby-remark-copy-linked-files'},
           {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              icon: `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14.851 11.923c-.179-.641-.521-1.246-1.025-1.749-1.562-1.562-4.095-1.563-5.657 0l-4.998 4.998c-1.562 1.563-1.563 4.095 0 5.657 1.562 1.563 4.096 1.561 5.656 0l3.842-3.841.333.009c.404 0 .802-.04 1.189-.117l-4.657 4.656c-.975.976-2.255 1.464-3.535 1.464-1.28 0-2.56-.488-3.535-1.464-1.952-1.951-1.952-5.12 0-7.071l4.998-4.998c.975-.976 2.256-1.464 3.536-1.464 1.279 0 2.56.488 3.535 1.464.493.493.861 1.063 1.105 1.672l-.787.784zm-5.703.147c.178.643.521 1.25 1.026 1.756 1.562 1.563 4.096 1.561 5.656 0l4.999-4.998c1.563-1.562 1.563-4.095 0-5.657-1.562-1.562-4.095-1.563-5.657 0l-3.841 3.841-.333-.009c-.404 0-.802.04-1.189.117l4.656-4.656c.975-.976 2.256-1.464 3.536-1.464 1.279 0 2.56.488 3.535 1.464 1.951 1.951 1.951 5.119 0 7.071l-4.999 4.998c-.975.976-2.255 1.464-3.535 1.464-1.28 0-2.56-.488-3.535-1.464-.494-.495-.863-1.067-1.107-1.678l.788-.785z"/></svg>`,
+              enableCustomId: true,
+            },
+          },
+          {
             resolve: 'gatsby-remark-images',
             options: {
               backgroundColor: '#fafafa',
               maxWidth: 1035,
             },
           },
-          {resolve: 'gatsby-remark-embedder'},
+          {
+            resolve: `gatsby-remark-embedder`,
+            options: {
+              customTransformers: [eggheadTransformer],
+            },
+          },
+          {
+            resolve: require.resolve('./other/gatsby-remark-af'),
+          },
         ],
       },
     },
@@ -118,6 +135,7 @@ module.exports = {
         maxWidth: 1035,
       },
     },
+    'gatsby-plugin-workerize-loader',
     'gatsby-plugin-twitter',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
@@ -125,12 +143,23 @@ module.exports = {
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
     {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: 'white',
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
+    'gatsby-plugin-remove-serviceworker',
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: config.siteTitle,
         short_name: config.siteTitleShort,
         description: config.siteDescription,
         start_url: config.pathPrefix,
+        lang: config.lang,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'standalone',
@@ -168,18 +197,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-62924965-1`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/lib/typography`,
       },
     },
-    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
@@ -206,106 +228,63 @@ module.exports = {
 }
 
 function getBlogFeed({filePathRegex, blogUrl, ...overrides}) {
+  /**
+   * These RSS feeds can be quite expensive to generate. Limiting the number of
+   * posts and keeping each item's template lightweight (only using frontmatter,
+   * avoiding the html/excerpt fields) helps negate this.
+   */
   return {
     serialize: ({query: {allMdx}}) => {
       const stripSlash = slug => (slug.startsWith('/') ? slug.slice(1) : slug)
       return allMdx.edges.map(edge => {
         const url = `${siteUrl}/${stripSlash(edge.node.fields.slug)}`
-        // TODO: clean this up... This shouldn't be here and it should be dynamic.
-        const footer = `
-          <div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
-            <div style="display: flex;">
-              <div style="padding-right: 20px;">
-                <img
-                  src="https://kentcdodds.com/images/small-circular-kent.png"
-                  alt="Kent C. Dodds"
-                  style="max-width: 80px; border-radius: 50%;"
-                />
-              </div>
-              <p>
-                <strong>Kent C. Dodds</strong> is a JavaScript software engineer and
-                teacher. He's taught hundreds of thousands of people how to make the world
-                a better place with quality software development tools and practices. He
-                lives with his wife and four kids in Utah.
-              </p>
-            </div>
-            <div>
-              <p>Learn more with Kent C. Dodds:</p>
-              <ul>
-                <li>
-                  <a href="https://kentcdodds.com/workshops">Live, professional workshops</a>:
-                  Join Kent C. Dodds from the comfort of your home for live remote workshops.
-                  Tickets are limited! 🎟
-                </li>
-                <li>
-                  <a href="https://testingjavascript.com">TestingJavaScript.com</a>: Jump on
-                  this self-paced workshop and learn the smart, efficient way to test any
-                  JavaScript application. 🏆
-                </li>
-              </ul>
-            </div>
-          </div>
-        `
-
-        const postText = `<div>${footer}</div><div style="margin-top=55px; font-style: italic;">(This article was posted to my blog at <a href="${blogUrl}">${blogUrl}</a>. You can <a href="${url}">read it online by clicking here</a>.)</div>`
-
-        // Hacky workaround for https://github.com/gaearon/overreacted.io/issues/65
-        const html = (edge.node.html || ``)
-          .replace(/href="\//g, `href="${siteUrl}/`)
-          .replace(/src="\//g, `src="${siteUrl}/`)
-          .replace(/"\/static\//g, `"${siteUrl}/static/`)
-          .replace(/,\s*\/static\//g, `,${siteUrl}/static/`)
 
         return {
           ...edge.node.frontmatter,
-          description: edge.node.excerpt,
           date: edge.node.fields.date,
           url,
           guid: url,
           custom_elements: [
             {
               'content:encoded': `<div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
-                ${html}
-                ${postText}
-              </div>`,
+                  <p>
+                    I've posted a new article <em>"${edge.node.frontmatter.title}"</em> and you can <a href="${url}">read it online</a>.
+                    <br>
+                    ${edge.node.fields.plainTextDescription}
+                    <br>
+                    You can also <a href="${siteUrl}/subscribe">subscribe</a> for weekly emails on what I'm learning, working on, and writing about.
+                  </p>
+                </div>`,
             },
           ],
         }
       })
     },
     query: `
-     {
-       site {
-         siteMetadata {
-           title
-           description
-         }
-       }
-
-       allMdx(
-         limit: 1000,
-         filter: {
-           frontmatter: {published: {ne: false}}
-           fileAbsolutePath: {regex: "${filePathRegex}"}
-         }
-         sort: { order: DESC, fields: [frontmatter___date] }
-       ) {
-         edges {
-           node {
-             excerpt(pruneLength: 250)
-             html
-             fields {
-               slug
-               date
-             }
-             frontmatter {
-               title
+       {
+         allMdx(
+           limit: 25,
+           filter: {
+             frontmatter: {published: {ne: false}}
+             fileAbsolutePath: {regex: "${filePathRegex}"}
+           }
+           sort: { order: DESC, fields: [frontmatter___date] }
+         ) {
+           edges {
+             node {
+               fields {
+                 slug
+                 date
+                 plainTextDescription
+               }
+               frontmatter {
+                 title
+               }
              }
            }
          }
        }
-     }
-   `,
+     `,
     ...overrides,
   }
 }

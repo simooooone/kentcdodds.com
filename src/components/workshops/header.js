@@ -1,5 +1,5 @@
-import React from 'react'
-import {css} from '@emotion/core'
+import * as React from 'react'
+import {css} from '@emotion/react'
 import {fonts, rhythm} from '../../lib/typography'
 import {bpMaxSM} from '../../lib/breakpoints'
 import theme from '../../../config/theme'
@@ -9,28 +9,24 @@ import discountStripe from '../../images/icons/stripe.svg'
 import {format} from 'date-fns'
 import TimeRange from './time-range'
 
-const Discount = ({discount}) => (
-  <>
-    {discount && (
-      <div
-        css={css`
-          padding: 0 0 15px 0;
-        `}
-      >
-        <em>
-          early bird ends:{' '}
-          {format(new Date(discount.ends), 'MMM Do, YYYY h:mm a (ZZ)')}!
-        </em>
-      </div>
-    )}
-  </>
-)
+const Discount = ({discount}) =>
+  discount ? (
+    <div
+      css={css`
+        padding: 0 0 15px 0;
+      `}
+    >
+      <em>
+        early bird ends:{' '}
+        {format(new Date(discount.ends), 'MMM do, yyyy h:mm a (xx)')}!
+      </em>
+    </div>
+  ) : null
 
-const Stripe = ({discount, ...props}) => (
-  <div
-    css={css`
-      ${discount
-        ? `
+const Stripe = ({discount, ...props}) =>
+  discount ? (
+    <div
+      css={css`
         display: block;
         position: absolute;
         width: 70px;
@@ -38,23 +34,21 @@ const Stripe = ({discount, ...props}) => (
         background-image: url(${discountStripe});
         background-size: 100% 100%;
         background-repeat: no-repeat;
-      margin-top: -42px;
-      margin-left: -42px;
-      ${bpMaxSM} {
-        margin-top: -21px;
-        margin-left: -21px;
-        width: 40px;
-        height: 40px;
-        h1 {
-          margin-top: ${discount ? '40px' : 'auto'};
+        margin-top: -42px;
+        margin-left: -42px;
+        ${bpMaxSM} {
+          margin-top: -21px;
+          margin-left: -21px;
+          width: 40px;
+          height: 40px;
+          h1 {
+            margin-top: ${discount ? '40px' : 'auto'};
+          }
         }
-      }
-      `
-        : `display: none;`}
-    `}
-    {...props}
-  />
-)
+      `}
+      {...props}
+    />
+  ) : null
 
 const Header = ({
   discount = false,
@@ -67,11 +61,13 @@ const Header = ({
   startTime,
   endTime,
   url,
+  className,
 }) => {
   const ticketUrl = discount ? discount.url : url
 
   return (
     <div
+      className={className}
       css={css`
         ${styles}
         background: white;
@@ -152,7 +148,7 @@ const Header = ({
           <Discount discount={discount} />
           {date ? (
             <div className="date">
-              {format(new Date(startTime), 'MMM Do, YYYY')}
+              {format(new Date(startTime), 'MMM do, yyyy')}
             </div>
           ) : (
             <div className="date">TBA</div>

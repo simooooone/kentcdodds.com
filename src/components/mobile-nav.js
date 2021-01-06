@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {css} from '@emotion/core'
+import {css} from '@emotion/react'
 import theme from '../../config/theme'
 import Container from './container'
 import {Link} from 'gatsby'
@@ -107,13 +107,6 @@ const Toggle = ({color = 'white'}) => {
               Blog
             </Link>
             <Link
-              aria-label="View talks page"
-              to="/talks"
-              activeClassName="active"
-            >
-              Talks
-            </Link>
-            <Link
               aria-label="View workshops page"
               to="/workshops"
               activeClassName="active"
@@ -122,10 +115,24 @@ const Toggle = ({color = 'white'}) => {
             </Link>
             <Link
               aria-label="View podcast page"
-              to="/chats-with-kent-podcast/seasons/01"
+              to="/chats-with-kent-podcast"
               activeClassName="active"
             >
               Podcast
+            </Link>
+            <Link
+              aria-label="View courses page"
+              to="/courses"
+              activeClassName="active"
+            >
+              Courses
+            </Link>
+            <Link
+              aria-label="Join the KCD Discord"
+              to="/discord"
+              activeClassName="active"
+            >
+              Discord
             </Link>
             <Link
               aria-label="View about page"

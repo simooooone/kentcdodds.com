@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import Title from './title'
 import Subtitle from './subtitle'
@@ -8,7 +8,7 @@ import List from './list'
 import Code from './code'
 
 export default {
-  wrapper: ({children}) => <>{children}</>,
+  wrapper: ({children}) => children,
   h1: props => <Title {...props} />,
   h2: props => <Subtitle {...props} />,
   h3: props => <SmallTitle {...props} />,

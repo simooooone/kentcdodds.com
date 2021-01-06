@@ -1,10 +1,10 @@
-import React from 'react'
+import * as React from 'react'
 import {graphql} from 'gatsby'
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer'
 import SEO from 'components/seo'
 import Container from 'components/container'
 import Layout from 'components/layout'
-import {css} from '@emotion/core'
+import {css} from '@emotion/react'
 import {fonts} from '../lib/typography'
 import get from 'lodash/get'
 import isEmpty from 'lodash/isEmpty'
@@ -27,10 +27,8 @@ export default function WorkshopPage(props) {
 function Workshop({data: {site, mdx}}) {
   const {title, banner} = mdx.fields
   const {ckTag} = mdx.frontmatter
-  const {events: allEvents, isLoading} = useWorkshopEvents()
-  const events = allEvents.filter(event => {
-    return event.title.toLowerCase() === title.toLowerCase()
-  })
+  const {events: allEvents, isLoading} = useWorkshopEvents({title})
+  const events = allEvents.filter(event => event.workshop.title === title)
   return (
     <Layout
       site={site}
@@ -75,9 +73,17 @@ function Workshop({data: {site, mdx}}) {
             </div>
           ) : null}
 
-          {isLoading
-            ? '... loading workshop details...'
-            : events.map(scheduledEvent => {
+          {isLoading ? (
+            '... loading workshop details...'
+          ) : (
+            <div
+              css={css`
+                & > *:not(:last-child) {
+                  margin-bottom: 30px;
+                }
+              `}
+            >
+              {events.map(scheduledEvent => {
                 const soldOut = scheduledEvent.remaining <= 0
                 const discount = get(scheduledEvent, 'discounts.early', false)
                 return (
@@ -97,6 +103,8 @@ function Workshop({data: {site, mdx}}) {
                   />
                 )
               })}
+            </div>
+          )}
 
           <div
             css={css`
@@ -135,7 +143,6 @@ export const pageQuery = graphql`
         ckTag
       }
       fields {
-        editLink
         title
         noFooter
         description

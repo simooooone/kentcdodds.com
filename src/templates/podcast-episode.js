@@ -1,56 +1,17 @@
-import React from 'react'
+import * as React from 'react'
 import Container from 'components/container'
 import {graphql} from 'gatsby'
-import {css} from '@emotion/core'
+import {css} from '@emotion/react'
 import {fonts} from '../lib/typography'
 import {bpMaxMD, bpMaxSM} from '../lib/breakpoints'
 import theme from '../../config/theme'
 import styled from '@emotion/styled'
-import Link from 'components/link'
 import SEO from 'components/seo'
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer'
 import Layout from 'components/layout'
 import EpisodeList from 'components/podcast/list'
-
 import podcastMetaImage from '../images/podcast/metaImage.jpg'
-// import ApplePodcasts from '../images/podcast/apple.svg'
-import GooglePodcasts from '../images/podcast/google.svg'
-import Spotify from '../images/podcast/spotify.svg'
-import Rss from '../images/podcast/rss.svg'
-
-const ProviderLink = styled(Link)({
-  display: 'flex',
-  alignItems: 'center',
-  padding: '10px 15px',
-  fontSize: 15,
-
-  borderRadius: 5,
-  backgroundColor: 'white',
-  color: 'rgba(0,0,0,0.8) !important',
-  border: '1px solid rgba(0,0,0,0.05)',
-  img: {
-    margin: '0 10px 0 0',
-  },
-  ':not(:last-of-type)': {
-    marginRight: 10,
-    [bpMaxSM]: {
-      margin: '0 3px 5px',
-    },
-  },
-
-  ':hover': {
-    boxShadow: '0 5px 30px -5px rgba(0,0,0,0.075)',
-  },
-  [bpMaxSM]: {
-    margin: '0 3px 5px',
-    fontSize: 12,
-    padding: '5px 7px',
-
-    img: {
-      maxWidth: 20,
-    },
-  },
-})
+import DistributionPlatforms from '../components/podcast/platforms'
 
 const Sidebar = styled.aside(
   css({
@@ -63,7 +24,7 @@ const Sidebar = styled.aside(
       visibility: 'hidden',
       position: 'absolute',
       bottom: '0',
-      zIndex: '10',
+      zIndex: '9',
       width: '100%',
       height: 40,
       backgroundImage:
@@ -147,20 +108,7 @@ function PodcastEpisodePage({data: {mdx, allMdx}, children}) {
             marginBottom: 10,
           })}
         >
-          {/* ✅ TODO: Restore as provider URLs are available */}
-          {/* <ProviderLink to="/">
-            <img src={ApplePodcasts} alt="Listen on Apple Podcasts" /> Apple
-          </ProviderLink>
-          */}
-          <ProviderLink to="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5zaW1wbGVjYXN0LmNvbS9YX3dTX1dZaA">
-            <img src={GooglePodcasts} alt="Listen on Google Podcasts" /> Google
-          </ProviderLink>
-          <ProviderLink to="https://open.spotify.com/show/7GkO2poedjbltWT5lduL5w">
-            <img src={Spotify} alt="Listen on Spotify" /> Spotify
-          </ProviderLink>
-          <ProviderLink to="https://feeds.simplecast.com/X_wS_WYh">
-            <img src={Rss} alt="Subscribe via RSS" /> RSS
-          </ProviderLink>
+          <DistributionPlatforms />
         </Container>
         <Container
           noVerticalPadding
@@ -194,7 +142,7 @@ function PodcastEpisodePage({data: {mdx, allMdx}, children}) {
               frameBorder="no"
               scrolling="no"
               seamless
-              src={`https://player.simplecast.com/${mdx.frontmatter.id}?dark=false`}
+              src={`https://player.simplecast.com/${mdx.frontmatter.simpleCastId}?dark=false`}
             />
             <h1
               css={css({
@@ -211,7 +159,7 @@ function PodcastEpisodePage({data: {mdx, allMdx}, children}) {
             <h3 css={css({marginBottom: '2rem', marginTop: '1rem'})}>
               {mdx.frontmatter.description}
             </h3>
-            {mdx && <MDXRenderer>{mdx.body}</MDXRenderer>}
+            <MDXRenderer>{mdx.body}</MDXRenderer>
             {children}
           </Article>
         </Container>
@@ -222,17 +170,16 @@ function PodcastEpisodePage({data: {mdx, allMdx}, children}) {
 
 export default PodcastEpisodePage
 
-export const episodeQuery = graphql`
-  query($id: String!, $season: Int!) {
-    mdx(frontmatter: {id: {eq: $id}}) {
+export const query = graphql`
+  query($simpleCastId: String!, $season: Int!) {
+    mdx(frontmatter: {simpleCastId: {eq: $simpleCastId}}) {
       body
       frontmatter {
-        id
+        simpleCastId
         title
         description
         number
         season
-        id
         guestPhoto {
           childImageSharp {
             fixed(width: 80, height: 80) {
@@ -262,7 +209,7 @@ export const episodeQuery = graphql`
       totalCount
       nodes {
         frontmatter {
-          id
+          simpleCastId
           title
           description
           number

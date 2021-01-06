@@ -1,6 +1,5 @@
-import React from 'react'
+import * as React from 'react'
 import {navigate} from 'gatsby-link'
-import parseQueryString from '../../lib/parse-query-string'
 
 function SubjectSelector({options, noSelectionUi, label, value, ...rest}) {
   return (
@@ -40,7 +39,7 @@ function CountupTextarea({
     onChange(e)
   }
   // this allows us to increase the opacity exponensially as they near the maxLength
-  const level = Math.pow(length, 6) / Math.pow(maxLength, 6)
+  const level = length ** 6 / maxLength ** 6
   return (
     <div>
       <StoredFormControl>
@@ -77,20 +76,15 @@ function StoredFormControl({
   queryParamName = lsKey.replace(/lsfc:/, ''),
   defaultValue = formControl.props.defaultValue,
 }) {
-  const queryParams =
-    typeof window === 'undefined'
-      ? {}
-      : parseQueryString(window.location.search)
-  const queryParamValue = queryParams[queryParamName]
   const [hasChanged, setHasChanged] = React.useState(false)
-  const [value, setValue] = React.useState(
-    () =>
-      queryParamValue ||
-      (typeof window === 'undefined'
-        ? false
-        : window.localStorage.getItem(lsKey)) ||
-      defaultValue,
-  )
+  const [value, setValue] = React.useState(() => {
+    if (typeof window === 'undefined') {
+      return defaultValue
+    }
+    const searchParams = new URL(window.location).searchParams
+    const queryParamValue = searchParams.get(queryParamName)
+    return queryParamValue || window.localStorage.getItem(lsKey) || defaultValue
+  })
 
   if (
     formControl.props.value !== undefined &&
@@ -119,16 +113,16 @@ function StoredFormControl({
   })
 }
 
-function fetchReducer(state, {type, response, error}) {
+function fetchReducer(state, {type, data, error}) {
   switch (type) {
     case 'fetching': {
-      return {fetching: true, response: null, error: null}
+      return {fetching: true, data: null, error: null}
     }
     case 'fetched': {
-      return {fetching: false, response, error: null}
+      return {fetching: false, data, error: null}
     }
     case 'error': {
-      return {fetching: false, response: null, error}
+      return {fetching: false, data: null, error}
     }
     default:
       throw new Error(`Unsupported type: ${type}`)
@@ -138,7 +132,7 @@ function fetchReducer(state, {type, response, error}) {
 function useFetch({url, body}) {
   const [state, dispatch] = React.useReducer(fetchReducer, {
     fetching: false,
-    response: null,
+    data: null,
     error: null,
   })
   React.useEffect(() => {
@@ -148,24 +142,35 @@ function useFetch({url, body}) {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body,
-      }).then(
-        response => {
-          dispatch({type: 'fetched', response})
-          navigate('/contact/success')
-        },
-        error => {
-          dispatch({type: 'error', error})
-        },
-      )
+      })
+        .then(r => (r.ok ? r : Promise.reject(r)))
+        .then(
+          async response => {
+            const data = await response.json()
+            dispatch({type: 'fetched', data})
+          },
+          async error => {
+            try {
+              dispatch({
+                type: 'error',
+                error:
+                  (await error.json?.()) || (await error.text?.()) || error,
+              })
+            } catch (_ignore) {
+              // we tried to parse the response... But no dice so...
+              dispatch({type: 'error', error})
+            }
+          },
+        )
     }
   }, [url, body])
   return state
 }
 
 function ContactForm() {
-  const [body, setBody] = React.useState()
+  const [body, setBody] = React.useState('')
 
-  const {fetching, response, error} = useFetch({
+  const {fetching, data, error} = useFetch({
     url: `${process.env.NETLIFY_FUNCTIONS_URL}/contact`,
     body,
   })
@@ -174,17 +179,15 @@ function ContactForm() {
     if (fetching) {
       return
     }
-    if (response) {
+    if (data) {
       navigate('/contact/success')
     }
     if (error) {
-      /* eslint no-alert:0 */
-      window.alert('There was a problem. Check the developer console.')
       /* eslint no-console:0 */
       console.log(error)
-      throw error
+      setBody('')
     }
-  }, [fetching, response, error])
+  }, [fetching, data, error])
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -354,15 +357,14 @@ function ContactForm() {
                       </small>
                       <br />
                       <small>
-                        {`I prefer general questions to be asked on `}
-                        <a href="https://kcd.im/ama">{`my AMA`}</a>
+                        {`I prefer general questions to be asked during `}
+                        <a href="https://kcd.im/office-hours">{`my Office Hours`}</a>
                         {`. If you ask here, `}
                         <strong>
-                          {`I can't make any promises that `}
-                          <a href="https://kcd.im/no-time">{`I'll have time`}</a>
-                          {` to respond,`}
+                          <a href="https://kcd.im/no-time">
+                            {`I can't make any promises that I will respond.`}
+                          </a>
                         </strong>
-                        {` but I'll try.`}
                       </small>
                     </div>
                     <div>
@@ -424,6 +426,28 @@ function ContactForm() {
           Send
         </button>
         {fetching ? <span css={{marginLeft: 10}}>...</span> : null}
+        {error ? (
+          <div role="alert" css={{color: 'red'}}>
+            {error.message ? (
+              <>
+                <div>Something went wrong:</div>
+                <pre
+                  style={{
+                    backgroundColor: 'inherit',
+                    whiteSpace: 'normal',
+                  }}
+                >
+                  {error.message}
+                </pre>
+              </>
+            ) : (
+              <div>
+                {`Something went wrong, but I'm not quite sure what. Feel free to `}
+                <a href="https://twitter.com/kentcdodds">ping me on twitter</a>
+              </div>
+            )}
+          </div>
+        ) : null}
       </div>
     </form>
   )

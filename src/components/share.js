@@ -1,5 +1,5 @@
-import React from 'react'
-import {css} from '@emotion/core'
+import * as React from 'react'
+import {css} from '@emotion/react'
 import theme from '../../config/theme'
 
 import {TwitterShareButton, FacebookShareButton} from 'react-share'
@@ -10,11 +10,13 @@ const Share = ({url, title, twitterHandle}) => (
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      div {
+      div,
+      button {
         margin-right: 20px;
         cursor: pointer;
         :hover {
-          color: ${theme.brand.primary};
+          /* react-share uses inline styles */
+          color: ${theme.brand.primary} !important;
         }
       }
       span {

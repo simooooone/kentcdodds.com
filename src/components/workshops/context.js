@@ -1,9 +1,12 @@
-import React from 'react'
-import {useFetch} from 'react-async'
+import * as React from 'react'
 import {useStaticQuery, graphql} from 'gatsby'
 import isEmpty from 'lodash/isEmpty'
 import get from 'lodash/get'
 import intersection from 'lodash/intersection'
+import emojiStrip from 'emoji-strip'
+import {useAsync} from 'lib/use-async'
+
+const normalize = s => emojiStrip(s.toLowerCase()).trim()
 
 const workshopQuery = graphql`
   query {
@@ -29,11 +32,16 @@ const workshopQuery = graphql`
 const WorkshopEvents = React.createContext()
 
 function WorkshopEventsProvider(props) {
-  const headers = {Accept: 'application/json'}
-  const {data, error, isLoading} = useFetch(
-    `${process.env.NETLIFY_FUNCTIONS_URL}/tickets`,
-    {headers},
-  )
+  const {run, data, error, isLoading} = useAsync()
+  React.useEffect(() => {
+    run(
+      window
+        .fetch(`${process.env.NETLIFY_FUNCTIONS_URL}/tickets`, {
+          headers: {Accept: 'application/json'},
+        })
+        .then(r => r.json()),
+    )
+  }, [run])
   const value = React.useMemo(() => ({data, error, isLoading}), [
     data,
     error,
@@ -70,12 +78,18 @@ function useWorkshopEvents({keywords: keywordsFilter} = {}) {
   const {data} = context
   const events = get(data, 'events', []).map(event => {
     const workshop =
-      workshops.find(w => {
-        return w.title.toLowerCase() === event.title.toLowerCase()
-      }) || {}
+      workshops.find(w => normalize(w.title) === normalize(event.title)) || {}
     return {
       ...workshop,
       ...event,
+      workshop,
+      // by adding the title as keywords it helps us capture workshops
+      // which don't have associated events, but *do* have words like "testing"
+      // or "react" in them.
+      keywords: normalize(event.title)
+        .split(' ')
+        .concat(event.keywords)
+        .filter(Boolean),
       workshopSlug: workshop.slug,
     }
   })

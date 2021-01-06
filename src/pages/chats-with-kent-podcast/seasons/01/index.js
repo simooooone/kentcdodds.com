@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import {graphql} from 'gatsby'
 import {Redirect} from '@reach/router'
 import first from 'lodash/first'
@@ -11,7 +11,7 @@ function Season1({data: {allMdx}}) {
 
 export default Season1
 
-export const latestEpisodeQuery = graphql`
+export const query = graphql`
   {
     allMdx(
       filter: {frontmatter: {season: {eq: 1}}, fields: {isPodcast: {eq: true}}}
@@ -19,7 +19,6 @@ export const latestEpisodeQuery = graphql`
     ) {
       nodes {
         fields {
-          isPodcast
           slug
         }
       }

@@ -1,8 +1,10 @@
 describe('app', () => {
   it('works', () => {
     cy.visit('/')
-      .getAllByText(/about/i, {selector: 'a'})
+    cy.wait(500) // wait for rehydration
+    cy.findAllByRole('link', {name: /workshops/i})
+      .last()
       .click()
-      .getByText(/About Kent C. Dodds/i)
+    cy.findAllByRole('heading', {name: /Remote Workshops/i})
   })
 })

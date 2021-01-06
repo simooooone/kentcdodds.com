@@ -1,12 +1,13 @@
-import React from 'react'
-import parseQueryString from '../../lib/parse-query-string'
+import * as React from 'react'
 
 function ZencastrLink() {
   const [{link, retrievedLink}, dispatch] = React.useReducer(
-    (state, {zencastr}) => {
-      if (zencastr) {
+    (state, zencastrParam) => {
+      if (zencastrParam) {
         return {
-          link: `https://zencastr.com/kentcdodds/${zencastr.toLowerCase()}`,
+          link: `https://zencastr.com/kentcdodds/${zencastrParam
+            .replace(/'/g, '')
+            .toLowerCase()}`,
           retrievedLink: true,
         }
       } else {
@@ -16,8 +17,8 @@ function ZencastrLink() {
     {link: null, retrievedLink: false},
   )
   React.useEffect(() => {
-    const qs = parseQueryString(window.location.search)
-    dispatch(qs)
+    const searchParams = new URL(window.location).searchParams
+    dispatch(searchParams.get('zencastr'))
   }, [link])
 
   return (

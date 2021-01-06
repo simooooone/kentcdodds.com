@@ -29,9 +29,11 @@ node_modules
 .sass-cache/
 .cache/
 .DS_Store
+.idea
 public
 
 cypress/videos
 cypress/screenshots
 .env
 .netlify
+*.ignored*

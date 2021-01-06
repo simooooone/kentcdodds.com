@@ -1,10 +1,10 @@
-import React from 'react'
+import * as React from 'react'
 import Link from '../components/link'
-import {css} from '@emotion/core'
+import {css} from '@emotion/react'
 import theme from '../../config/theme'
 import {bpMaxSM} from '../lib/breakpoints'
 import SubscribeForm from './forms/subscribe'
-import {Twitter, GitHub, YouTube} from './social'
+import {Twitter, GitHub, YouTube, RSS} from './social'
 import Container from './container'
 
 import Signature from '../images/signature.png'
@@ -59,6 +59,7 @@ const Footer = ({subscribeForm = <SubscribeForm />, maxWidth}) => (
           <Twitter />
           <GitHub />
           <YouTube />
+          <RSS />
         </div>
 
         <Link to="/" aria-label="Return to homepage">

@@ -1,6 +1,6 @@
-import React from 'react'
+import * as React from 'react'
 import Link from './link'
-import {css} from '@emotion/core'
+import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import theme from '../../config/theme'
 import {fonts} from '../lib/typography'
@@ -92,6 +92,7 @@ function Header({
             activeClassName="none"
             headerColor={headerColor}
             css={{
+              position: 'relative',
               fontFamily: fonts.regular,
               display: 'flex',
               alignItems: 'center',
@@ -140,13 +141,6 @@ function Header({
             </NavLink>
             <NavLink
               headerColor={headerColor}
-              to="/talks/"
-              aria-label="View talks page"
-            >
-              Talks
-            </NavLink>
-            <NavLink
-              headerColor={headerColor}
               to="/workshops/"
               aria-label="View workshops page"
             >
@@ -154,10 +148,24 @@ function Header({
             </NavLink>
             <NavLink
               headerColor={headerColor}
-              to="/chats-with-kent-podcast/seasons/01"
+              to="/chats-with-kent-podcast"
               aria-label="View podcast page"
             >
               Podcast
+            </NavLink>
+            <NavLink
+              headerColor={headerColor}
+              to="/courses"
+              aria-label="View courses page"
+            >
+              Courses
+            </NavLink>
+            <NavLink
+              headerColor={headerColor}
+              to="/discord"
+              aria-label="Join the KCD Discord"
+            >
+              Discord
             </NavLink>
             <NavLink
               headerColor={headerColor}

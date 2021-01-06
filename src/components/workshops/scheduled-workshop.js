@@ -1,5 +1,5 @@
-import React from 'react'
-import {css} from '@emotion/core'
+import * as React from 'react'
+import {css} from '@emotion/react'
 import {rhythm} from '../../lib/typography'
 import theme from '../../../config/theme'
 import Markdown from 'react-markdown'
@@ -78,7 +78,7 @@ function ScheduledWorkshop({
           margin-right: 20px;
         }
         ${soldOut &&
-          `
+        `
         .button {
          color: ${theme.brand.primary};
          border: 2px solid ${theme.brand.primary};
@@ -197,7 +197,7 @@ function ScheduledWorkshop({
         >
           <em>
             early bird ends:{' '}
-            {format(new Date(discount.ends), 'MMM Do, YYYY h:mm a (ZZ)')}
+            {format(new Date(discount.ends), 'MMM do, yyyy h:mm a (xx)')}
           </em>
         </div>
       )}

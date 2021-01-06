@@ -19,42 +19,161 @@ export default [
   //   `,
   // },
   {
-    title: 'All Things Open Keynote',
-    resources: [],
+    title: 'Managing State Management',
+    resources: [
+      '[slides](https://github.com/kentcdodds/managing-state-management-slides)',
+    ],
+    tags: ['react', 'state'],
+    deliveries: [
+      {
+        event: 'React Rally',
+        date: '2020-08-14',
+        recording: '',
+      },
+      {
+        event: 'Reactathon',
+        date: '2020-12-08',
+        recording:
+          'https://youtu.be/pkNzU-5oDiA?t=3890&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
+      },
+    ],
+    description: `
+      Application State Management is one of the hardest parts of building and
+      maintaining React Applications. The number of options you have is numerous
+      and the reason is that it's just such a hard problem with so many nuances
+      and trade-offs. One thing that makes application state management harder
+      is when we aren't thoughtful about how that state is organized and
+      categorized in our app. There are different kinds of state and they
+      require different approaches for management. When you try to treat all app
+      state exactly the same is when problems come into play.
+      
+      Let's talk about what some of those categories are and how we can
+      drastically simplify our application code and improve our app's
+      performance by thinking about and organizing our state differently.
+    `,
+  },
+  {
+    title: 'Consume ➡️ Build ➡️ Teach',
+    resources: ['[slides](https://slides.com/kentcdodds/consume-build-teach)'],
+    tags: ['career'],
+    deliveries: [
+      {
+        event: '[React Summit](https://reactsummit.com/)',
+        date: '2020-10-15',
+        recording:
+          'https://www.youtube.com/watch?v=yUcd_gXByoQ&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
+      },
+    ],
+    description: `
+      How do you level up? How do you jumpstart your learning when getting into
+      something new? Nobody has more than 24 hours a day, so how do you maximize
+      the impact of your limited time?
+
+      In this keynote, I'm going to tell you a bit of my own story, and some
+      tips and tricks that I've learned so you can be as productive as you can
+      be at learning new things and solidifying that knowledge so it's there
+      when you need it.
+    `,
+  },
+  {
+    title: 'Building the Open Source Community We Want',
+    resources: [
+      '[slides](https://drive.google.com/open?id=1-kpw_RlWNjzGcV4E69KlsOktbCru6LFx)',
+    ],
     tags: ['open source'],
     deliveries: [
       {
         event:
           '[All Things Open 2019](https://allthingsopen.org/speakers/kent-c-dodds)',
         date: '2019-10-13',
+        recording:
+          'https://www.youtube.com/watch?v=OGeoH-sqePE&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
       },
     ],
     description: `
-      More details forthcoming...
+      What kind of world do you want to live in? The world of Open Source
+      Software is supremely vast, and it's growing. We can't sit idly by, coding
+      alone in our closets with an attitude of "if you want something done
+      right, you have to do it yourself." We don't want to live in a world like
+      that. The community we want to build around OSS requires intentional
+      effort to maximize the happiness of everyone involved. And the rewards of
+      working toward that goal are serene. I'd like to personally welcome you to
+      the open source community. Bring your distinctiveness and help to make our
+      world a better place.
     `,
   },
   {
-    title: 'Connect.Tech Keynote',
-    resources: [],
-    tags: [],
+    title: 'AHA Programming',
+    resources: [
+      '[slides](https://github.com/kentcdodds/aha-programming-slides)',
+    ],
+    tags: ['software development', 'abstraction'],
     deliveries: [
+      {
+        event: '[Concatenate Conf](https://www.concatenate.dev)',
+        date: '2019-10-11',
+        recording: 'https://youtu.be/-Ez53J0vj9c?t=18077',
+      },
       {
         event: '[Connect.Tech](https://connect.tech)',
         date: '2019-10-16',
       },
+      {
+        event: '[React Summit](https://remote.reactsummit.com/)',
+        date: '2020-04-17',
+        recording:
+          'https://www.youtube.com/watch?v=wuVy7rwkCfc&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
+      },
     ],
     description: `
-      More details forthcoming...
+      Are you the kind of programmer who prefers to never see the same code in
+      two places, or do you make liberal use of copy/paste? Many developers
+      swear by the Don't Repeat Yourself (DRY) philosophy while others prefer to
+      Write Everything Twice (WET). But which of these produces more
+      maintainable codebases? I've seen both of these approaches lay waste to
+      codebases and I have a new ideology I would like to propose to you:
+      Avoid Hasty Abstractions (AHA). In this keynote, we'll talk about
+      abstraction and how you can improve a codebase by applying and creating
+      abstractions more thoughtfully as well as how to get yourself out of a
+      mess of over or under-abstraction.
+    `,
+  },
+  {
+    title: 'Application State Management',
+    resources: [
+      '[slides](https://github.com/kentcdodds/application-state-management-talk)',
+    ],
+    tags: ['react'],
+    deliveries: [
+      {
+        event:
+          '[Reactadelphia](https://www.meetup.com/Reactadelphia/events/264461785/)',
+        date: '2019-09-17',
+      },
+    ],
+    description: `
+      For the last few years of using React, we as a community have been trying
+      to solve the hard problem of application state management with React when
+      we already had one all along. React itself is a state management library.
+      
+      You can use features and practices that have been a part of React for a
+      long time and it will change the way you think about state management for
+      your React apps. In other words: you probably don't need Redux, MobX, or
+      any state management library other than React. Let’s explore how that’s
+      possible and why you might want to think twice before reaching for an
+      abstraction.
     `,
   },
   {
     title: 'React Hook Pitfalls',
-    resources: [],
+    resources: ['[slides](https://github.com/kentcdodds/react-hooks-pitfalls)'],
     tags: ['react'],
     deliveries: [
       {
         event: '[React Rally 2019](https://www.reactrally.com)',
         date: '2019-08-22',
+        recording:
+          'https://www.youtube.com/watch?v=VIRcX2X7EUk&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
       },
     ],
     description: `
@@ -138,7 +257,7 @@ export default [
     `,
   },
   {
-    title: 'LIVE! Understanding react-testing-library internals',
+    title: 'LIVE! Understanding React Testing Library internals',
     resources: [],
     tags: ['react', 'testing'],
     deliveries: [
@@ -194,6 +313,11 @@ export default [
           '[RVA.js Meetup](https://www.meetup.com/rva-js/events/jrgfhpyzdbhb)',
         date: '2019-02-12',
       },
+      {
+        event: '[Connect.Tech](https://connect.tech)',
+        date: '2019-10-16',
+        recording: 'https://www.recallact.com/presentation/why-react-hooks',
+      },
     ],
     description: `
         In October, the React team announced a new feature coming 🔜 to React called "hooks." In this talk we'll
@@ -209,6 +333,7 @@ export default [
       {
         event: '[Framework Summit](https://www.frameworksummit.com/sessions)',
         date: '2018-10-02',
+        recording: 'https://www.youtube.com/watch?v=pjDOJdMM2eg',
       },
     ],
     description: `
@@ -275,6 +400,12 @@ export default [
         recording:
           'https://youtu.be/AiJ8tRRH0f8?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
       },
+      {
+        event: '[Byteconf React 2020](https://www.bytesized.xyz/react-2020)',
+        date: '2020-04-01',
+        recording:
+          'https://www.youtube.com/watch?v=5io81WLgXtg&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
+      },
     ],
     description: `
         One of the things I love about React is how easy it is to encapsulate UI code into a component. I love this
@@ -312,6 +443,10 @@ export default [
       {
         event: '[ByteConf](https://byteconf.com)',
         date: '2018-08-31',
+      },
+      {
+        event: 'YYC Dev',
+        date: '2020-09-15',
       },
     ],
     description: `
@@ -376,6 +511,8 @@ export default [
       {
         event: '[KnowJS](https://certifiedfreshevents.com/events/knowjs-2018)',
         date: '2018-04-13',
+        recording:
+          'https://www.youtube.com/watch?v=6mtPPkKchcQ&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
       },
     ],
     description: `
@@ -599,6 +736,8 @@ export default [
         event:
           '[All Things Open](https://allthingsopen.org/talk/managing-an-open-source-project)',
         date: '2019-10-15',
+        recording:
+          'https://www.youtube.com/watch?v=zCJyiBu12Jw&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
       },
     ],
     description: `
@@ -696,6 +835,13 @@ export default [
     ],
     tags: ['ECMAScript', 'babel', 'eslint', 'live coding'],
     deliveries: [
+      {
+        event:
+          '[PDXNode Meetup](https://www.meetup.com/pdxnode/events/dcvjdnywnbqb/)',
+        date: '2017-10-12',
+        recording:
+          'https://www.youtube.com/watch?v=VicU_XwriWw&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf',
+      },
       {
         event: '[Open West 2017](https://www.openwest.org/schedule/#talk-99)',
         date: '2017-07-13',

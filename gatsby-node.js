@@ -1,12 +1,17 @@
-/* eslint-disable max-statements */
+const fs = require('fs')
 const path = require('path')
+const {URL} = require('url')
+const rimraf = require('rimraf')
+const {spawnSync} = require('child_process')
 const slugify = require('@sindresorhus/slugify')
 const {createFilePath} = require('gatsby-source-filesystem')
 const remark = require('remark')
 const stripMarkdownPlugin = require('strip-markdown')
-const _ = require('lodash')
+const {zipFunctions} = require('@netlify/zip-it-and-ship-it')
+const config = require('./config/website')
+const blogUtils = require('./other/blog-utils')
 
-const PAGINATION_OFFSET = 7
+const twoDigits = n => (n.toString().length < 2 ? `0${n}` : n)
 
 const createWorkshops = (createPage, edges) => {
   edges.forEach(({node}, i) => {
@@ -27,7 +32,7 @@ const createWorkshops = (createPage, edges) => {
 }
 
 function createWorkshopPages({data, actions}) {
-  if (_.isEmpty(data.edges)) {
+  if (!data.edges.length) {
     throw new Error('There are no workshops!')
   }
 
@@ -74,41 +79,26 @@ const createPosts = (createPage, createRedirect, edges) => {
   })
 }
 
-function createBlogPages({blogPath, data, paginationTemplate, actions}) {
-  if (_.isEmpty(data.edges)) {
+function createBlogPages({data, actions}) {
+  if (!data.edges.length) {
     throw new Error('There are no posts!')
   }
 
   const {edges} = data
   const {createRedirect, createPage} = actions
   createPosts(createPage, createRedirect, edges)
-  createPaginatedPages(
-    actions.createPage,
-    edges,
-    blogPath,
-    paginationTemplate,
-    {
-      categories: [],
-    },
-  )
   return null
 }
 
 const createEpisodes = (createPage, edges) => {
   edges.forEach(({node}) => {
-    const seasonNumber = node.frontmatter.season
-    const twoDigits = n => (n.toString().length < 2 ? `0${n}` : n)
-    const episodePath = `chats-with-kent-podcast/seasons/${twoDigits(
-      seasonNumber,
-    )}/episodes/${node.frontmatter.slug}`
-
     createPage({
-      path: episodePath,
+      path: node.fields.slug,
       component: path.resolve(`./src/templates/podcast-episode.js`),
       context: {
-        slug: episodePath,
-        id: node.frontmatter.id,
-        title: node.frontmatter.title,
+        slug: node.fields.slug,
+        simpleCastId: node.frontmatter.simpleCastId,
+        title: node.fields.title,
         season: node.frontmatter.season,
       },
     })
@@ -116,7 +106,7 @@ const createEpisodes = (createPage, edges) => {
 }
 
 function createPodcastPages({data, actions}) {
-  if (_.isEmpty(data.edges)) {
+  if (!data.edges.length) {
     throw new Error('There are no podcast episodes!')
   }
   const {edges} = data
@@ -126,7 +116,7 @@ function createPodcastPages({data, actions}) {
   return null
 }
 
-exports.createPages = async ({actions, graphql}) => {
+const createPages = async ({actions, graphql}) => {
   const {data, errors} = await graphql(`
     fragment PostDetails on Mdx {
       fileAbsolutePath
@@ -154,11 +144,12 @@ exports.createPages = async ({actions, graphql}) => {
           node {
             fileAbsolutePath
             frontmatter {
+              simpleCastId
+              season
+            }
+            fields {
               title
               slug
-              id
-              season
-              number
             }
           }
         }
@@ -220,13 +211,11 @@ exports.createPages = async ({actions, graphql}) => {
   createBlogPages({
     blogPath: '/blog',
     data: blog,
-    paginationTemplate: path.resolve(`src/templates/blog.js`),
     actions,
   })
   createBlogPages({
     blogPath: '/writing/blog',
     data: writing,
-    paginationTemplate: path.resolve(`src/templates/writing-blog.js`),
     actions,
   })
   createWorkshopPages({
@@ -235,7 +224,7 @@ exports.createPages = async ({actions, graphql}) => {
   })
 }
 
-exports.onCreateWebpackConfig = ({actions}) => {
+const onCreateWebpackConfig = ({actions}) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
@@ -243,203 +232,225 @@ exports.onCreateWebpackConfig = ({actions}) => {
   })
 }
 
-function createPaginatedPages(
-  createPage,
-  edges,
-  pathPrefix,
-  paginationTemplate,
-  context,
-) {
-  const pages = edges.reduce((acc, value, index) => {
-    const pageIndex = Math.floor(index / PAGINATION_OFFSET)
-
-    if (!acc[pageIndex]) {
-      acc[pageIndex] = []
-    }
-
-    acc[pageIndex].push(value.node.id)
-
-    return acc
-  }, [])
-
-  pages.forEach((page, index) => {
-    const previousPagePath = `${pathPrefix}/${index + 1}`
-    const nextPagePath = index === 1 ? pathPrefix : `${pathPrefix}/${index - 1}`
-
-    createPage({
-      path: index > 0 ? `${pathPrefix}/${index}` : `${pathPrefix}`,
-      component: paginationTemplate,
-      context: {
-        pagination: {
-          page,
-          nextPagePath: index === 0 ? null : nextPagePath,
-          previousPagePath:
-            index === pages.length - 1 ? null : previousPagePath,
-          pageCount: pages.length,
-          pathPrefix,
-        },
-        ...context,
-      },
-    })
-  })
-}
-
-// eslint-disable-next-line complexity
-exports.onCreateNode = ({node, getNode, actions}) => {
-  const {createNodeField} = actions
-
-  if (node.internal.type === `Mdx`) {
-    const parent = getNode(node.parent)
-    let slug =
-      node.frontmatter.slug ||
-      createFilePath({node, getNode, basePath: `pages`})
-    let {isWriting, isWorkshop, isScheduled, isPodcast} = false
-
-    if (node.fileAbsolutePath.includes('content/blog/')) {
-      slug = `/blog/${node.frontmatter.slug || slugify(parent.name)}`
-    }
-
-    if (node.fileAbsolutePath.includes('content/podcast/')) {
-      const twoDigits = n => (n.toString().length < 2 ? `0${n}` : n)
-      slug = `chats-with-kent-podcast/seasons/${twoDigits(
-        node.frontmatter.season,
-      )}/episodes/${node.frontmatter.slug}`
-      isPodcast = true
-    }
-
-    if (node.fileAbsolutePath.includes('content/workshops/')) {
-      isWriting = false
-      isWorkshop = true
-      isScheduled = false
-      if (node.frontmatter.date) {
-        isWriting = false
-        isScheduled = true
-      }
-      slug = `/workshops/${node.frontmatter.slug ||
-        slugify(node.frontmatter.title)}`
-    }
-
-    if (node.fileAbsolutePath.includes('content/writing-blog/')) {
-      isWriting = true
-      slug = `/writing/blog/${node.frontmatter.slug || slugify(parent.name)}`
-    }
-    createNodeField({
-      name: 'id',
-      node,
-      value: node.id,
-    })
-
-    createNodeField({
-      name: 'published',
-      node,
-      value: node.frontmatter.published,
-    })
-
-    createNodeField({
-      name: 'title',
-      node,
-      value: node.frontmatter.title,
-    })
-
-    createNodeField({
-      name: 'author',
-      node,
-      value: node.frontmatter.author || 'Kent C. Dodds',
-    })
-
-    createNodeField({
-      name: 'description',
-      node,
-      value: node.frontmatter.description,
-    })
-
-    createNodeField({
-      name: 'plainTextDescription',
-      node,
-      value: stripMarkdown(node.frontmatter.description),
-    })
-
-    createNodeField({
-      name: 'slug',
-      node,
-      value: slug,
-    })
-
-    createNodeField({
-      name: 'date',
-      node,
-      value: node.frontmatter.date ? node.frontmatter.date.split(' ')[0] : '',
-    })
-
-    createNodeField({
-      name: 'banner',
-      node,
-      value: node.frontmatter.banner,
-    })
-
-    createNodeField({
-      name: 'bannerCredit',
-      node,
-      value: node.frontmatter.bannerCredit,
-    })
-
-    createNodeField({
-      name: 'categories',
-      node,
-      value: node.frontmatter.categories || [],
-    })
-
-    createNodeField({
-      name: 'keywords',
-      node,
-      value: node.frontmatter.keywords || [],
-    })
-
-    createNodeField({
-      name: 'redirects',
-      node,
-      value: node.frontmatter.redirects,
-    })
-
-    createNodeField({
-      name: 'editLink',
-      node,
-      value: `https://github.com/kentcdodds/kentcdodds.com/edit/master${node.fileAbsolutePath.replace(
-        __dirname,
-        '',
-      )}`,
-    })
-
-    createNodeField({
-      name: 'noFooter',
-      node,
-      value: isWriting ? false : node.frontmatter.noFooter || false,
-    })
-
-    createNodeField({
-      name: 'isWriting',
-      node,
-      value: isWriting,
-    })
-
-    createNodeField({
-      name: 'isWorkshop',
-      node,
-      value: isWorkshop,
-    })
-
-    createNodeField({
-      name: 'isScheduled',
-      node,
-      value: isScheduled,
-    })
-
-    createNodeField({
-      name: 'isPodcast',
-      node,
-      value: isPodcast,
-    })
+const onCreateNode = (...args) => {
+  if (args[0].node.internal.type === `Mdx`) {
+    onCreateMdxNode(...args)
   }
 }
 
-/* eslint consistent-return:0 */
+// eslint-disable-next-line complexity
+function onCreateMdxNode({node, getNode, actions}) {
+  const parentNode = getNode(node.parent)
+  const {createNodeField} = actions
+  let slug =
+    node.frontmatter.slug || createFilePath({node, getNode, basePath: `pages`})
+  let {isWriting, isWorkshop, isScheduled, isPodcast} = false
+
+  if (node.fileAbsolutePath.includes('content/blog/')) {
+    slug = `/blog/${node.frontmatter.slug || slugify(parentNode.name)}`
+  }
+
+  if (node.fileAbsolutePath.includes('content/podcast/')) {
+    slug = `chats-with-kent-podcast/seasons/${twoDigits(
+      node.frontmatter.season,
+    )}/episodes/${node.frontmatter.slug}`
+    isPodcast = true
+  }
+
+  if (node.fileAbsolutePath.includes('content/workshops/')) {
+    isWriting = false
+    isWorkshop = true
+    isScheduled = false
+    if (node.frontmatter.date) {
+      isWriting = false
+      isScheduled = true
+    }
+    slug = `/workshops/${
+      node.frontmatter.slug || slugify(node.frontmatter.title)
+    }`
+  }
+
+  if (node.fileAbsolutePath.includes('content/writing-blog/')) {
+    isWriting = true
+    slug = `/writing/blog/${node.frontmatter.slug || slugify(parent.name)}`
+  }
+
+  createNodeField({
+    name: 'id',
+    node,
+    value: node.id,
+  })
+
+  createNodeField({
+    name: 'published',
+    node,
+    value: node.frontmatter.published,
+  })
+
+  createNodeField({
+    name: 'title',
+    node,
+    value: node.frontmatter.title,
+  })
+
+  createNodeField({
+    name: 'author',
+    node,
+    value: node.frontmatter.author || 'Kent C. Dodds',
+  })
+
+  createNodeField({
+    name: 'description',
+    node,
+    value: node.frontmatter.description,
+  })
+
+  createNodeField({
+    name: 'plainTextDescription',
+    node,
+    value: stripMarkdown(node.frontmatter.description),
+  })
+
+  createNodeField({
+    name: 'slug',
+    node,
+    value: slug,
+  })
+
+  const productionUrl = new URL(config.siteUrl)
+  productionUrl.pathname = slug
+
+  createNodeField({
+    name: 'productionUrl',
+    node,
+    value: productionUrl.toString(),
+  })
+
+  createNodeField({
+    name: 'date',
+    node,
+    value: node.frontmatter.date ? node.frontmatter.date.split(' ')[0] : '',
+  })
+
+  createNodeField({
+    name: 'banner',
+    node,
+    value: node.frontmatter.banner,
+  })
+
+  createNodeField({
+    name: 'bannerCredit',
+    node,
+    value: node.frontmatter.bannerCredit,
+  })
+
+  createNodeField({
+    name: 'categories',
+    node,
+    value: node.frontmatter.categories || [],
+  })
+
+  createNodeField({
+    name: 'keywords',
+    node,
+    value: node.frontmatter.keywords || [],
+  })
+
+  createNodeField({
+    name: 'redirects',
+    node,
+    value: node.frontmatter.redirects,
+  })
+
+  createNodeField({
+    name: 'editLink',
+    node,
+    value: `https://github.com/kentcdodds/kentcdodds.com/edit/master${node.fileAbsolutePath.replace(
+      __dirname,
+      '',
+    )}`,
+  })
+
+  createNodeField({
+    name: 'historyLink',
+    node,
+    value: `https://github.com/kentcdodds/kentcdodds.com/commits/master${node.fileAbsolutePath.replace(
+      __dirname,
+      '',
+    )}`,
+  })
+
+  createNodeField({
+    name: 'noFooter',
+    node,
+    value: isWriting ? false : node.frontmatter.noFooter || false,
+  })
+
+  createNodeField({
+    name: 'isWriting',
+    node,
+    value: isWriting,
+  })
+
+  createNodeField({
+    name: 'isWorkshop',
+    node,
+    value: isWorkshop,
+  })
+
+  createNodeField({
+    name: 'isScheduled',
+    node,
+    value: isScheduled,
+  })
+
+  createNodeField({
+    name: 'isPodcast',
+    node,
+    value: isPodcast,
+  })
+}
+
+const onPreBootstrap = () => {
+  if (process.env.gatsby_executing_command === 'develop') {
+    return
+  }
+  require('./other/load-cache')
+
+  const result = spawnSync(
+    './node_modules/.bin/npm-run-all --parallel lint test:coverage',
+    {stdio: 'inherit', shell: true},
+  )
+  if (result.status !== 0) {
+    throw new Error(`pre build failure. Status: ${result.status}`)
+  }
+}
+
+const onPostBuild = async ({graphql}) => {
+  if (process.env.gatsby_executing_command === 'develop') {
+    return
+  }
+  require('./other/make-cache')
+  blogUtils.createJSONFile(graphql, './public/blog.json')
+  const srcLocation = path.join(__dirname, `netlify/functions`)
+  const outputLocation = path.join(__dirname, `public/functions`)
+  if (fs.existsSync(outputLocation)) {
+    rimraf.sync(outputLocation)
+  }
+  fs.mkdirSync(outputLocation)
+  await zipFunctions(srcLocation, outputLocation)
+}
+
+module.exports = {
+  createPages,
+  onCreateWebpackConfig,
+  onCreateNode,
+  onPreBootstrap,
+  onPostBuild,
+}
+
+/*
+eslint
+  consistent-return: "off",
+  max-statements: "off",
+*/

@@ -26,6 +26,9 @@ const typography = new Typography({
   bodyColor: 'hsla(0,0%,0%,0.8)',
 
   overrideStyles: ({rhythm}) => ({
+    body: {
+      fontVariantLigatures: 'none',
+    },
     h1: {
       color: 'hsla(0,0%,0%,0.75)',
       fontFamily: fonts.light,
@@ -36,9 +39,6 @@ const typography = new Typography({
     h2: {
       color: 'hsla(0,0%,0%,0.775)',
       fontFamily: fonts.semibold,
-    },
-    h3: {
-      color: 'hsla(0,0%,0%,0.8)',
     },
     'h1,h2,h3,h4,h5,h6': {
       lineHeight: 1,

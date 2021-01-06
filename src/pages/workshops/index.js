@@ -1,11 +1,12 @@
-import React from 'react'
+import * as React from 'react'
 import {graphql} from 'gatsby'
-import {css} from '@emotion/core'
+import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import Layout from 'components/layout'
 import Container from 'components/container'
 import {rhythm} from '../../lib/typography'
 import SEO from 'components/seo'
+import {bpMaxSM} from '../../lib/breakpoints'
 import theme from '../../../config/theme'
 import Hero from 'components/big-hero'
 import {uniq, includes, truncate} from 'lodash'
@@ -30,6 +31,29 @@ export default function RemoteWorkshopsPage(props) {
   )
 }
 
+const TechToggle = styled.button`
+  padding: 8px 15px 8px 12px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  border: none !important;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  margin: 5px;
+  :focus {
+    outline: none;
+  }
+  img {
+    margin: 0;
+    margin-right: 10px;
+  }
+  :hover,
+  :focus {
+    color: ${theme.colors.body_color};
+    background: #fafafa !important;
+    border: none;
+  }
+`
+
 function RemoteWorkshops({data: {workshops}}) {
   const workshopTech = uniq(
     workshops.edges.map(({node: workshop}) => workshop.frontmatter.tech),
@@ -49,29 +73,6 @@ function RemoteWorkshops({data: {workshops}}) {
       (tech === 'testing' && `${testingIcon}`)
     )
   }
-
-  const TechToggle = styled.button`
-    padding: 8px 15px 8px 12px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-    border: none !important;
-    display: flex;
-    align-items: center;
-    text-transform: capitalize;
-    margin: 5px;
-    :focus {
-      outline: none;
-    }
-    img {
-      margin: 0;
-      margin-right: 10px;
-    }
-    :hover,
-    :focus {
-      color: ${theme.colors.body_color};
-      background: #fafafa !important;
-      border: none;
-    }
-  `
 
   return (
     <Layout
@@ -110,15 +111,21 @@ function RemoteWorkshops({data: {workshops}}) {
                 css={css`
                   ${techToggleIsActive(displayedTech, tech)
                     ? `
-                  color: white; background: #2F313E;
-                  :hover {
+                  color: white; 
+                  background: #2F313E;
+                  :hover,
+                  :focus {
                     color: white !important;
-                    background: #232323 !important;}`
+                    background: #232323 !important;
+                  }`
                     : `
-                  color: black; background: white;
-                  :hover {
+                  color: black; 
+                  background: white;
+                  :hover,
+                  :focus {
                     color: black !important;
-                    background: #fafafa; !important}`}
+                    background: #fafafa !important;
+                  }`}
                 `}
                 key={tech}
                 onClick={() => {
@@ -139,7 +146,10 @@ function RemoteWorkshops({data: {workshops}}) {
             display: grid;
             grid-gap: 20px;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            margin-bottom: ${rhythm(2)};
+
+            ${bpMaxSM} {
+              grid-template-columns: 1fr;
+            }
           `}
         >
           {workshops.edges

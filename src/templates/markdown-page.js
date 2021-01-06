@@ -1,9 +1,12 @@
-import React from 'react'
+import * as React from 'react'
 import Container from 'components/container'
 import SEO from 'components/seo'
 import Layout from 'components/layout'
 import BigHero from 'components/big-hero'
 import theme from '../../config/theme'
+
+import {css} from '@emotion/react'
+import {bpMaxSM} from 'lib/breakpoints'
 
 function MarkdownPage({children, pageContext: {frontmatter}}) {
   return (
@@ -14,15 +17,23 @@ function MarkdownPage({children, pageContext: {frontmatter}}) {
         hero={
           frontmatter.useBigHero ? (
             <BigHero message={frontmatter.heroMessage} />
-          ) : (
-            undefined
-          )
+          ) : undefined
         }
         noFooter={frontmatter.noFooter}
         frontmatter={frontmatter}
         headerColor={theme.colors.white}
       >
-        <Container>{children}</Container>
+        <Container
+          maxWidth={frontmatter.maxWidth}
+          css={css`
+            ${bpMaxSM} {
+              padding: 20px
+                ${frontmatter.noMobileHorizontalPadding ? 0 : '20'}px;
+            }
+          `}
+        >
+          {children}
+        </Container>
       </Layout>
     </>
   )

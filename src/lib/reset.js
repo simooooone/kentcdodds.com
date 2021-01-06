@@ -1,4 +1,4 @@
-import {css} from '@emotion/core'
+import {css} from '@emotion/react'
 import theme from '../../config/theme'
 import typography, {fonts} from '../lib/typography'
 
@@ -74,6 +74,9 @@ const reset = css`
   }
   [tabindex='-1']:focus {
     outline: none !important;
+  }
+  details {
+    margin-bottom: 1rem;
   }
   pre {
     margin-top: 0;

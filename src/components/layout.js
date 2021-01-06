@@ -1,11 +1,10 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import {graphql, StaticQuery} from 'gatsby'
+import * as React from 'react'
+import {Helmet} from 'react-helmet'
+import {graphql, useStaticQuery} from 'gatsby'
 import {MDXProvider} from '@mdx-js/react'
-import {Global, css} from '@emotion/core'
+import {Global, css, ThemeProvider} from '@emotion/react'
 import styled from '@emotion/styled'
-import {ThemeProvider} from 'emotion-theming'
-import NotificationMessage from 'components/notification-message'
+import {QueryParamNotificationMessage} from 'components/notification-message'
 import Header from 'components/header'
 import Footer from 'components/footer'
 import mdxComponents from 'components/mdx'
@@ -91,7 +90,7 @@ export const globalStyles = css`
     }
   }
   pre {
-    background-color: #061526 !important;
+    background-color: #061526;
     border-radius: 4px;
     font-size: 16px;
     padding: 10px;
@@ -119,6 +118,30 @@ export const globalStyles = css`
     padding: 0 5px;
     border-left: 5px solid #c9a7ff;
   }
+
+  /* the permalink icon */
+  h1 .anchor svg,
+  h2 .anchor svg,
+  h3 .anchor svg,
+  h4 .anchor svg,
+  h5 .anchor svg,
+  h6 .anchor svg {
+    position: absolute;
+    left: -24px;
+    height: 100%; /* vertically center */
+    width: 20px;
+    transition: all 0.2s;
+    opacity: 0;
+  }
+  h1:hover .anchor svg,
+  h2:hover .anchor svg,
+  h3:hover .anchor svg,
+  h4:hover .anchor svg,
+  h5:hover .anchor svg,
+  h6:hover .anchor svg {
+    opacity: 1;
+  }
+
   ${reset};
 `
 
@@ -150,7 +173,6 @@ const DefaultHero = styled.section`
 `
 
 function Layout({
-  data,
   headerLink,
   siteTitle = 'Kent C. Dodds',
   frontmatter = {},
@@ -167,6 +189,20 @@ function Layout({
   logo,
   maxWidth = 720,
 }) {
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          title
+          description
+          author {
+            name
+          }
+          keywords
+        }
+      }
+    }
+  `)
   const {
     site: {
       siteMetadata,
@@ -182,8 +218,9 @@ function Layout({
 
   return (
     <ThemeProvider theme={theme}>
-      <NotificationMessage queryStringKey="subscribed">{`Thanks for subscribing!`}</NotificationMessage>
-      <NotificationMessage queryStringKey="remain-subscribed">{`Glad you're still here!`}</NotificationMessage>
+      <QueryParamNotificationMessage queryStringKey="message" />
+      <QueryParamNotificationMessage queryStringKey="subscribed">{`Thanks for subscribing!`}</QueryParamNotificationMessage>
+      <QueryParamNotificationMessage queryStringKey="remain-subscribed">{`Glad you're still here!`}</QueryParamNotificationMessage>
       <Global styles={globalStyles} />
       <Helmet
         title={title}
@@ -218,9 +255,7 @@ function Layout({
             fixed={fixedHeader}
             headerImage={logo}
           />
-          <MDXProvider components={mdxComponents}>
-            <>{children}</>
-          </MDXProvider>
+          <MDXProvider components={mdxComponents}>{children}</MDXProvider>
         </div>
         <div css={{flexShrink: '0'}}>
           {noFooter ? null : (
@@ -236,24 +271,4 @@ function Layout({
   )
 }
 
-export default function LayoutWithSiteData(props) {
-  return (
-    <StaticQuery
-      query={graphql`
-        {
-          site {
-            siteMetadata {
-              title
-              description
-              author {
-                name
-              }
-              keywords
-            }
-          }
-        }
-      `}
-      render={data => <Layout data={data} {...props} />}
-    />
-  )
-}
+export default Layout
